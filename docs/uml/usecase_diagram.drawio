@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="페이지-1" id="A7Jwyg4PW08jDS_Wg2zD">
+    <mxGraphModel dx="1347" dy="730" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="XLtBCG5eS27eR4A1Upxv-18" edge="1" parent="1" source="XLtBCG5eS27eR4A1Upxv-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="XLtBCG5eS27eR4A1Upxv-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XLtBCG5eS27eR4A1Upxv-20" edge="1" parent="1" source="XLtBCG5eS27eR4A1Upxv-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="XLtBCG5eS27eR4A1Upxv-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XLtBCG5eS27eR4A1Upxv-26" edge="1" parent="1" source="XLtBCG5eS27eR4A1Upxv-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="XLtBCG5eS27eR4A1Upxv-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XLtBCG5eS27eR4A1Upxv-1" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="사용자" vertex="1">
+          <mxGeometry height="60" width="30" x="230" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="XLtBCG5eS27eR4A1Upxv-23" edge="1" parent="1" source="XLtBCG5eS27eR4A1Upxv-2" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="XLtBCG5eS27eR4A1Upxv-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XLtBCG5eS27eR4A1Upxv-2" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Weather API" vertex="1">
+          <mxGeometry height="60" width="30" x="230" y="554" as="geometry" />
+        </mxCell>
+        <mxCell id="XLtBCG5eS27eR4A1Upxv-24" edge="1" parent="1" source="XLtBCG5eS27eR4A1Upxv-3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="XLtBCG5eS27eR4A1Upxv-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XLtBCG5eS27eR4A1Upxv-3" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="APScheduler" vertex="1">
+          <mxGeometry height="60" width="30" x="230" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="XLtBCG5eS27eR4A1Upxv-5" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="패션 이미지 수집" vertex="1">
+          <mxGeometry height="80" width="120" x="380" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="XLtBCG5eS27eR4A1Upxv-6" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="코디 추천 조회" vertex="1">
+          <mxGeometry height="80" width="120" x="380" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="XLtBCG5eS27eR4A1Upxv-7" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="로그인" vertex="1">
+          <mxGeometry height="80" width="120" x="380" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="XLtBCG5eS27eR4A1Upxv-8" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="피드백 제출" vertex="1">
+          <mxGeometry height="80" width="120" x="380" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="XLtBCG5eS27eR4A1Upxv-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="500" width="190" x="345" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="XLtBCG5eS27eR4A1Upxv-28" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="WEARther System" vertex="1">
+          <mxGeometry height="30" width="130" x="375" y="170" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
