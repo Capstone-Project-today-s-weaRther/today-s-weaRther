@@ -1,0 +1,49 @@
+{
+  "input_posts": [
+    {
+      "style": "캐주얼",
+      "color": "베ige, 크림색",
+      "item": [
+        "상의",
+        "하의",
+        "벨트"
+      ],
+      "reliability_score": 55.0,
+      "image": "C:\\Users\\Sharon Na\\Desktop\\fashion_images\\20260526_014426_0.jpg"
+    },
+    {
+      "style": "캐주얼",
+      "color": "베ige, 회색, 검은색",
+      "item": [
+        "상의",
+        "하의",
+        "아우터",
+        "신발"
+      ],
+      "reliability_score": 55.0,
+      "image": "C:\\Users\\Sharon Na\\Desktop\\fashion_images\\20260526_014426_1.jpg"
+    },
+    {
+      "style": "캐주얼",
+      "color": "검은색, 흰색",
+      "item": [
+        "상의",
+        "하의",
+        "신발"
+      ],
+      "reliability_score": 55.0,
+      "image": "C:\\Users\\Sharon Na\\Desktop\\fashion_images\\20260526_014426_2.jpg"
+    }
+  ],
+  "weather_temp": 23.8,
+  "corrected_temp": 17.5,
+  "recommendation": {
+    "level": "적당",
+    "outfit": {
+      "상의": "긴팔/얇은 니트",
+      "하의": "긴바지",
+      "아우터": "가벼운 가디건",
+      "신발": "운동화"
+    }
+  }
+}
