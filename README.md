@@ -12,10 +12,12 @@
 
 ## 기술 스택
 - **Crawling**: Python + Playwright
-- **DB**: Supabase
+- **DB**: SQLite
 - **Scheduler**: APScheduler (2시간 주기 자동 실행)
-- **Image Analysis**: Claude Vision API (개발 중)
-- **Frontend**: Streamlit (개발 중)
+- **Image Analysis**: Claude Vision API
+- **Recommendation Engine**: reliability.py + weights.py + recommend.py
+- **Weather**: 기상청 API
+- **Frontend**: Streamlit
 
 ## 폴더 구조
 \`\`\`
@@ -31,8 +33,10 @@ today-s-weaRther/
 ## 개발 현황
 - [x] Instagram 자동 로그인 + 팝업 닫기
 - [x] 키워드 기반 이미지 수집
-- [x] Supabase DB 연동
+- [x] DB 연동 (SQLite)
 - [x] APScheduler 자동 스케줄러
-- [ ] AI 이미지 분류
-- [ ] 추천 엔진
-- [ ] 사용자 UI
+- [x] AI 이미지 분류
+- [x] 추천 엔진
+- [x] 사용자 UI (Streamlit 프로토타입)
+- [ ] X(Twitter) 크롤러
+- [ ] 사용자 테스트 및 평가
