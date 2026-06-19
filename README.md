@@ -20,7 +20,7 @@
 - **Frontend**: Streamlit
 
 ## 폴더 구조
-\`\`\`
+```
 today-s-weaRther/
 ├── docs/          # 설계 문서, UML
 ├── crawler/       # 인스타그램 크롤러
@@ -28,7 +28,7 @@ today-s-weaRther/
 ├── engine/        # 추천 엔진
 ├── db/            # DB 스키마
 └── prototype/     # Streamlit 앱
-\`\`\`
+```
 
 ## 개발 현황
 - [x] Instagram 자동 로그인 + 팝업 닫기
