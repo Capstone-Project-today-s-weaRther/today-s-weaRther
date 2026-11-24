@@ -1,0 +1,24 @@
+{
+  "updated_at": "2026-11-24T18:00:00+09:00",
+  "regions": {
+    "성수": {
+      "아침": {
+        "weather": { "temp": 4, "feels_like": 1, "condition": "맑음" },
+        "top4": [
+          { "item": "롱패딩", "percent": 38 },
+          { "item": "숏패딩", "percent": 27 },
+          { "item": "코트", "percent": 21 },
+          { "item": "니트", "percent": 14 }
+        ],
+        "recommendation": {
+          "comment": "오늘 아침은 쌀쌀하니 니트에 코트를 걸쳐보세요.",
+          "image": "https://example.com/look1.jpg",
+          "products": [
+            { "name": "울 코트", "link": "https://example.com/p1", "delivery": "fast" },
+            { "name": "니트 가디건", "link": "https://example.com/p2", "delivery": "normal" }
+          ]
+        }
+      }
+    }
+  }
+}
