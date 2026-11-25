@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon / Brand / Logo">
+<path id="Rectangle 2" d="M0 13.3645C0 5.98348 5.98348 0 13.3645 0H51.6355C59.0165 0 65 5.98348 65 13.3645V51.6355C65 59.0165 59.0165 65 51.6355 65H13.3645C5.98348 65 0 59.0165 0 51.6355V13.3645Z" fill="url(#paint0_linear_0_9)"/>
+<path id="Vector" d="M24.6028 48.5981V27.0327H16.4019V17.0093H24.6028L32.8037 20.3505L41.0047 17.0093H49.2056V27.0327H41.0047V48.5981" fill="white"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_9" x1="32.5" y1="0" x2="32.5" y2="65" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="0.25" stop-color="#131313"/>
+<stop offset="1" stop-color="#666666"/>
+</linearGradient>
+</defs>
+</svg>
