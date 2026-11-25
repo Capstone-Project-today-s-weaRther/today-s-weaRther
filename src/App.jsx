@@ -205,6 +205,27 @@ const REGION_OPTIONS = [
   },
 ];
 
+const SENSITIVITY_OPTIONS = [
+  {
+    team: '팀 추워',
+    icon: '🧊',
+    label: '조금만 추워도 춥게 느껴요',
+    desc: '추위 민감형 · 보온 위주 추천',
+  },
+  {
+    team: '팀 딱좋아',
+    icon: '⚖️',
+    label: '보통이에요',
+    desc: '중립형 · 기온 기준 균형 추천',
+  },
+  {
+    team: '팀 더워',
+    icon: '🔥',
+    label: '조금만 더워도 덥게 느껴요',
+    desc: '더위 민감형 · 가볍고 쾌적한 추천',
+  },
+];
+
 const INITIAL_REVIEWS = [
   { id: 1, author: '주주', team: '팀 추워', tag: '더워요', text: '' },
   { id: 2, author: '주주', team: '팀 더워', tag: '딱 좋아요', text: 'ㅇㅇㅇㅇ' },
@@ -243,9 +264,13 @@ const FALLBACK_CLOTHING = [
 ];
 
 export default function App() {
-  const [screen, setScreen] = useState('home'); // onboarding | home | outfit | my
-  const [onboardingStep, setOnboardingStep] = useState(1); // 1: 닉네임, 2: 위치, 3: 체질
-  const [regionId, setRegionId] = useState('seongsu');
+  // 초기 진입 흐름: splash -> login -> onboarding(1: 위치, 2: 체질설문, 3: 닉네임/시작) -> home | outfit | my
+  const [screen, setScreen] = useState('splash');
+  const [onboardingStep, setOnboardingStep] = useState(1);
+
+  const [regionId, setRegionId] = useState(
+    () => localStorage.getItem('wearther_region') || 'seongsu'
+  );
   const [locationModalOpen, setLocationModalOpen] = useState(false);
   const [locationQuery, setLocationQuery] = useState('');
   const [timeSlot, setTimeSlot] = useState('아침');
@@ -271,6 +296,10 @@ export default function App() {
   const [reviewInput, setReviewInput] = useState('');
   const [reviewTag, setReviewTag] = useState('딱 좋아요');
   const [jsonData, setJsonData] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem('wearther_region', regionId);
+  }, [regionId]);
 
   useEffect(() => {
     localStorage.setItem('wearther_nickname', nickname);
@@ -433,41 +462,109 @@ export default function App() {
     setReviewInput('');
   };
 
+  const showBottomTab = screen === 'home' || screen === 'outfit' || screen === 'my';
+
   return (
     <div className="wearther-shell">
       <div className="wearther-phone">
+        {screen === 'splash' && (
+          <div className="screen-scroll splash-screen">
+            <div className="splash-center">
+              <div className="splash-sun-wrap">
+                <div className="splash-sun" />
+                <span className="splash-collar">WEAR</span>
+              </div>
+              <h1 className="splash-title">옷늘날씨</h1>
+              <p className="splash-sub">Today&apos;s weARther</p>
+              <p className="splash-copy">
+                날씨와 지금 이 거리의 옷차림을 맞춰보는 오늘의 코디 가이드
+              </p>
+            </div>
+            <div className="splash-bottom">
+              <button
+                type="button"
+                className="primary-btn full-btn"
+                onClick={() => setScreen('login')}
+              >
+                시작하기
+              </button>
+              <button
+                type="button"
+                className="ghost-link-btn"
+                onClick={() => setScreen('home')}
+              >
+                바로 홈으로 이동
+              </button>
+            </div>
+          </div>
+        )}
+
+        {screen === 'login' && (
+          <div className="screen-scroll login-screen">
+            <div className="onboarding-top-row">
+              <button
+                type="button"
+                className="back-link-btn"
+                onClick={() => setScreen('splash')}
+              >
+                &lt; 이전
+              </button>
+              <span className="step-pill">로그인</span>
+            </div>
+
+            <div className="login-hero">
+              <div className="mini-sun-badge" />
+              <h2>옷늘날씨에 오신 것을 환영해요</h2>
+              <p className="muted-desc">
+                간편 시작 후 위치와 평소 체감 성향을 설정하면 맞춤 코디를 보여드려요.
+              </p>
+            </div>
+
+            <div className="choice-stack">
+              <button
+                type="button"
+                className="social-btn primary-social"
+                onClick={() => {
+                  setOnboardingStep(1);
+                  setScreen('onboarding');
+                }}
+              >
+                Google 계정으로 시작하기
+              </button>
+              <button
+                type="button"
+                className="social-btn"
+                onClick={() => {
+                  setOnboardingStep(1);
+                  setScreen('onboarding');
+                }}
+              >
+                게스트로 온보딩 진행하기
+              </button>
+            </div>
+          </div>
+        )}
+
         {screen === 'onboarding' && (
           <div className="screen-scroll onboarding-screen">
-            <div className="onboarding-header">
+            <div className="onboarding-top-row">
               <span className="brand-title">옷늘날씨</span>
               <span className="step-pill">{onboardingStep} / 3</span>
             </div>
 
+            <div className="progress-track">
+              <div
+                className="progress-fill"
+                style={{ width: `${(onboardingStep / 3) * 100}%` }}
+              />
+            </div>
+
             {onboardingStep === 1 && (
               <div className="onboarding-card">
-                <h2>닉네임을 입력해주세요</h2>
-                <p className="muted-desc">입력한 닉네임은 브라우저에 저장됩니다.</p>
-                <input
-                  type="text"
-                  className="text-field"
-                  value={nickname}
-                  onChange={(e) => setNickname(e.target.value)}
-                  placeholder="닉네임 입력"
-                />
-                <button
-                  type="button"
-                  className="primary-btn"
-                  onClick={() => setOnboardingStep(2)}
-                >
-                  다음
-                </button>
-              </div>
-            )}
-
-            {onboardingStep === 2 && (
-              <div className="onboarding-card">
-                <h2>위치를 선택해주세요</h2>
-                <p className="muted-desc">시·구·동 기준으로 날씨와 권역 스타일을 보여줍니다.</p>
+                <h2>어느 지역의 날씨를 확인할까요?</h2>
+                <p className="muted-desc">
+                  선택한 위치의 날씨와 해당 권역의 거리 스타일 TOP 4를 보여줍니다.
+                </p>
                 <div className="choice-stack">
                   {REGION_OPTIONS.map((r) => (
                     <button
@@ -477,7 +574,47 @@ export default function App() {
                       onClick={() => setRegionId(r.id)}
                     >
                       <strong>{r.label}</strong>
-                      <span>{r.fullRegion}</span>
+                      <span>{r.fullRegion} · {r.zone}</span>
+                    </button>
+                  ))}
+                </div>
+                <div className="row-actions">
+                  <button
+                    type="button"
+                    className="secondary-btn"
+                    onClick={() => setScreen('login')}
+                  >
+                    이전
+                  </button>
+                  <button
+                    type="button"
+                    className="primary-btn"
+                    onClick={() => setOnboardingStep(2)}
+                  >
+                    다음
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {onboardingStep === 2 && (
+              <div className="onboarding-card">
+                <h2>평소 추위나 더위를 얼마나 타시나요?</h2>
+                <p className="muted-desc">
+                  체질 성향에 따라 오늘의 추천 코디와 그룹({team})이 설정됩니다.
+                </p>
+                <div className="choice-stack">
+                  {SENSITIVITY_OPTIONS.map((opt) => (
+                    <button
+                      key={opt.team}
+                      type="button"
+                      className={`choice-card ${team === opt.team ? 'selected' : ''}`}
+                      onClick={() => setTeam(opt.team)}
+                    >
+                      <strong>
+                        {opt.icon} {opt.label} ({opt.team})
+                      </strong>
+                      <span>{opt.desc}</span>
                     </button>
                   ))}
                 </div>
@@ -502,20 +639,28 @@ export default function App() {
 
             {onboardingStep === 3 && (
               <div className="onboarding-card">
-                <h2>체질 그룹을 선택해주세요</h2>
-                <p className="muted-desc">체질에 맞춰 추천 코디를 보여줍니다.</p>
-                <div className="choice-stack">
-                  {['팀 추워', '팀 딱좋아', '팀 더워'].map((t) => (
-                    <button
-                      key={t}
-                      type="button"
-                      className={`choice-card ${team === t ? 'selected' : ''}`}
-                      onClick={() => setTeam(t)}
-                    >
-                      <strong>{t}</strong>
-                    </button>
-                  ))}
+                <h2>앱에서 사용할 닉네임을 입력해주세요</h2>
+                <p className="muted-desc">
+                  입력한 닉네임과 설정은 브라우저에 저장되며 언제든 MY에서 바꿀 수 있어요.
+                </p>
+                <input
+                  type="text"
+                  className="text-field"
+                  value={nickname}
+                  onChange={(e) => setNickname(e.target.value)}
+                  placeholder="닉네임 입력"
+                />
+
+                <div className="welcome-summary-box">
+                  <div className="welcome-badge">{team}</div>
+                  <div className="welcome-text">
+                    어서오세요, <strong>{team} {nickname || '주주'}님</strong>!
+                  </div>
+                  <div className="welcome-sub">
+                    선택 위치: {currentRegion.label} ({currentRegion.fullRegion})
+                  </div>
                 </div>
+
                 <div className="row-actions">
                   <button
                     type="button"
@@ -768,10 +913,17 @@ export default function App() {
             </section>
 
             <section className="my-menu-group">
-              <div className="my-menu-item">
-                <span>내 정보 관리</span>
+              <button
+                type="button"
+                className="my-menu-item button-reset"
+                onClick={() => {
+                  setOnboardingStep(1);
+                  setScreen('onboarding');
+                }}
+              >
+                <span>온보딩 및 위치·체질 다시 설정</span>
                 <span>&gt;</span>
-              </div>
+              </button>
 
               <div className="my-edit-box">
                 <label className="field-label">닉네임</label>
@@ -809,10 +961,21 @@ export default function App() {
             </section>
 
             <div className="my-footer-actions">
-              <button type="button" className="my-action-btn">
+              <button
+                type="button"
+                className="my-action-btn"
+                onClick={() => setScreen('login')}
+              >
                 로그아웃
               </button>
-              <button type="button" className="my-action-btn danger">
+              <button
+                type="button"
+                className="my-action-btn danger"
+                onClick={() => {
+                  setOnboardingStep(1);
+                  setScreen('splash');
+                }}
+              >
                 회원탈퇴
               </button>
             </div>
@@ -867,29 +1030,31 @@ export default function App() {
           </div>
         )}
 
-        <nav className="bottom-tabbar" aria-label="하단 탭">
-          <button
-            type="button"
-            className={`tab-btn ${screen === 'home' ? 'active' : ''}`}
-            onClick={() => setScreen('home')}
-          >
-            홈
-          </button>
-          <button
-            type="button"
-            className={`tab-btn ${screen === 'outfit' ? 'active' : ''}`}
-            onClick={() => setScreen('outfit')}
-          >
-            오늘의 코디
-          </button>
-          <button
-            type="button"
-            className={`tab-btn ${screen === 'my' ? 'active' : ''}`}
-            onClick={() => setScreen('my')}
-          >
-            마이
-          </button>
-        </nav>
+        {showBottomTab && (
+          <nav className="bottom-tabbar" aria-label="하단 탭">
+            <button
+              type="button"
+              className={`tab-btn ${screen === 'home' ? 'active' : ''}`}
+              onClick={() => setScreen('home')}
+            >
+              홈
+            </button>
+            <button
+              type="button"
+              className={`tab-btn ${screen === 'outfit' ? 'active' : ''}`}
+              onClick={() => setScreen('outfit')}
+            >
+              오늘의 코디
+            </button>
+            <button
+              type="button"
+              className={`tab-btn ${screen === 'my' ? 'active' : ''}`}
+              onClick={() => setScreen('my')}
+            >
+              마이
+            </button>
+          </nav>
+        )}
       </div>
     </div>
   );
