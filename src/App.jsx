@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { supabase } from './lib/supabaseClient';
 
 const BASE = import.meta.env.BASE_URL || '/';
 
@@ -18,7 +17,7 @@ const REGION_OPTIONS = [
     zone: '서울동권',
     fullRegion: '서울특별시 성동구 성수동2가',
     updatedAt: '11. 24. 오후 06:00 기준',
-    weatherPayload: {
+    weatherBySlot: {
       아침: {
         temp: 4,
         feelsLike: 1,
@@ -58,18 +57,18 @@ const REGION_OPTIONS = [
     ],
     outfitByTeam: {
       '팀 추워': {
-        title: '오늘의 추천 코디',
+        title: '오늘의 추천',
         comment: '오늘 성수 아침은 쌀쌀하니 기모 이너와 도톰한 코트·패딩으로 따뜻하게 입어보세요.',
         img: 'assets/Img/coat.png',
       },
       '팀 딱좋아': {
-        title: '오늘의 추천 코디',
-        comment: '기본 니트에 코트나 자켓을 걸치면 출근길·외출 시 딱 알맞은 체온을 유지할 수 있어요.',
+        title: '오늘의 추천',
+        comment: '오늘 아침은 쌀쌀하니 니트에 코트를 걸쳐보세요.',
         img: 'assets/Img/jacket.png',
       },
       '팀 더워': {
-        title: '오늘의 추천 코디',
-        comment: '실내외 온도 차가 크니 통기성 좋은 상의에 탈착하기 쉬운 가벼운 아우터를 매치해보세요.',
+        title: '오늘의 추천',
+        comment: '실내외 온도 차가 크니 통기성 좋은 상의에 탈착하기 쉬운 아우터를 맞춰보세요.',
         img: 'assets/Img/long-sleeve.png',
       },
     },
@@ -83,7 +82,7 @@ const REGION_OPTIONS = [
     zone: '서울서권',
     fullRegion: '서울특별시 마포구 서교동',
     updatedAt: '11. 24. 오후 06:00 기준',
-    weatherPayload: {
+    weatherBySlot: {
       아침: {
         temp: 16,
         feelsLike: 16,
@@ -123,18 +122,18 @@ const REGION_OPTIONS = [
     ],
     outfitByTeam: {
       '팀 추워': {
-        title: '오늘의 추천 코디',
-        comment: '서교동은 낮에도 바람이 불 수 있으니 긴팔 위에 가디건이나 얇은 자켓을 챙겨보세요.',
+        title: '오늘의 추천',
+        comment: '서교동은 바람이 불 수 있으니 긴팔 위에 가디건이나 얇은 자켓을 챙겨보세요.',
         img: 'assets/Img/jacket.png',
       },
       '팀 딱좋아': {
-        title: '오늘의 추천 코디',
-        comment: '가벼운 셔츠나 얇은 긴팔로 산뜻하게 입기 좋은 날씨예요.',
+        title: '오늘의 추천',
+        comment: '가벼운 셔츠나 긴팔로 산뜻하게 입기 좋은 날씨예요.',
         img: 'assets/Img/long-sleeve.png',
       },
       '팀 더워': {
-        title: '오늘의 추천 코디',
-        comment: '한낮에는 따뜻하니 반팔이나 가벼운 상의 위주로 시원하게 입어보세요.',
+        title: '오늘의 추천',
+        comment: '따뜻한 기온이니 반팔이나 가벼운 상의 위주로 입어보세요.',
         img: 'assets/Img/short-sleeve.png',
       },
     },
@@ -148,7 +147,7 @@ const REGION_OPTIONS = [
     zone: '서울남권',
     fullRegion: '서울특별시 강남구 역삼동',
     updatedAt: '11. 24. 오후 06:00 기준',
-    weatherPayload: {
+    weatherBySlot: {
       아침: {
         temp: 8,
         feelsLike: 6,
@@ -188,18 +187,18 @@ const REGION_OPTIONS = [
     ],
     outfitByTeam: {
       '팀 추워': {
-        title: '오늘의 추천 코디',
-        comment: '일교차가 있으니 니트와 함께 보온성 있는 아우터를 꼭 걸치는 걸 추천해요.',
+        title: '오늘의 추천',
+        comment: '일교차가 있으니 니트와 함께 보온성 있는 아우터를 걸쳐보세요.',
         img: 'assets/Img/coat.png',
       },
       '팀 딱좋아': {
-        title: '오늘의 추천 코디',
-        comment: '단정한 셔츠·니트 조합에 자켓이나 코트를 매치하면 깔끔하게 어울려요.',
+        title: '오늘의 추천',
+        comment: '단정한 셔츠·니트 조합에 자켓이나 코트를 매치해보세요.',
         img: 'assets/Img/long-sleeve.png',
       },
       '팀 더워': {
-        title: '오늘의 추천 코디',
-        comment: '걸음이 많아지면 금방 따뜻해지니 레이어드하기 쉬운 상의를 골라보세요.',
+        title: '오늘의 추천',
+        comment: '활동량이 많다면 가벼운 상의 위주로 입어보세요.',
         img: 'assets/Img/jacket.png',
       },
     },
@@ -207,50 +206,39 @@ const REGION_OPTIONS = [
 ];
 
 const INITIAL_REVIEWS = [
-  { id: 1, author: '주주', team: '팀 추워', tag: '딱 좋아요', text: '아침 공기에는 아우터 걸치니까 딱 맞았어요.' },
-  { id: 2, author: '민지', team: '팀 딱좋아', tag: '딱 좋아요', text: '거리 스타일 TOP4랑 실제 체감이 비슷해서 고르기 쉬웠어요.' },
+  { id: 1, author: '주주', team: '팀 추워', tag: '더워요', text: '' },
+  { id: 2, author: '주주', team: '팀 더워', tag: '딱 좋아요', text: 'ㅇㅇㅇㅇ' },
+  { id: 3, author: '주주', team: '팀 더워', tag: '딱 좋아요', text: 'dd' },
 ];
 
-const BASE_OUTFIT_ITEMS = [
+const FALLBACK_CLOTHING = [
   {
-    id: 'item-coat',
+    id: 'cl-1',
     category: '아우터',
-    name: '클래식 울 블렌드 코트',
-    keywords: ['코트', '아우터', '단정', '출근'],
-    comment: '바람을 막아주면서도 깔끔한 실루엣을 살려주는 데일리 코트예요.',
+    name: '울 블렌드 코트',
+    comment: '니트 위에 걸치기 좋은 단정한 코트예요.',
     img: 'assets/Img/coat.png',
   },
   {
-    id: 'item-padding',
+    id: 'cl-2',
     category: '아우터',
-    name: '라이트 퀼팅 패딩',
-    keywords: ['패딩', '롱패딩', '숏패딩', '보온', '추위'],
-    comment: '기온이 낮거나 바람이 불 때 체온을 안정적으로 지켜주는 아우터예요.',
+    name: '라이트 패딩',
+    comment: '아침·저녁 기온이 낮을 때 보온하기 좋아요.',
     img: 'assets/Img/padding.png',
   },
   {
-    id: 'item-jacket',
+    id: 'cl-3',
     category: '아우터',
-    name: '소프트 텍스처 자켓',
-    keywords: ['자켓', '가디건', '환절기', '레이어드'],
-    comment: '실내외 기온 차가 있을 때 간편하게 입고 벗기 좋은 아우터예요.',
+    name: '소프트 자켓',
+    comment: '간절기에 가볍게 걸치기 좋은 아우터예요.',
     img: 'assets/Img/jacket.png',
   },
   {
-    id: 'item-long',
+    id: 'cl-4',
     category: '상의',
-    name: '코튼 블렌드 롱슬리브',
-    keywords: ['긴팔', '셔츠', '니트', '상의', '기본'],
-    comment: '단독으로 입거나 아우터 안에 받쳐 입기 좋은 기본 상의예요.',
+    name: '코튼 롱슬리브',
+    comment: '단독 또는 아우터 이너로 활용하기 좋은 상의예요.',
     img: 'assets/Img/long-sleeve.png',
-  },
-  {
-    id: 'item-short',
-    category: '상의',
-    name: '헤비 코튼 반팔 티셔츠',
-    keywords: ['반팔', '티셔츠', '여름', '활동'],
-    comment: '기온이 높거나 실내 활동이 많을 때 쾌적하게 입기 좋은 상의예요.',
-    img: 'assets/Img/short-sleeve.png',
   },
 ];
 
@@ -282,7 +270,7 @@ export default function App() {
   });
   const [reviewInput, setReviewInput] = useState('');
   const [reviewTag, setReviewTag] = useState('딱 좋아요');
-  const [rpcData, setRpcData] = useState([]);
+  const [jsonData, setJsonData] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('wearther_nickname', nickname);
@@ -304,6 +292,19 @@ export default function App() {
     }
   }, [reviews]);
 
+  useEffect(() => {
+    let active = true;
+    fetch(assetUrl('data/recommendations.json'))
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (active && data) setJsonData(data);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
   const currentRegion = useMemo(
     () => REGION_OPTIONS.find((r) => r.id === regionId) || REGION_OPTIONS[0],
     [regionId]
@@ -318,90 +319,109 @@ export default function App() {
         r.sido.toLowerCase().includes(q) ||
         r.sigungu.toLowerCase().includes(q) ||
         r.dong.toLowerCase().includes(q) ||
+        r.zone.toLowerCase().includes(q) ||
         r.fullRegion.toLowerCase().includes(q)
     );
   }, [locationQuery]);
 
   const slotWeather = useMemo(() => {
-    return currentRegion.weatherPayload[timeSlot] || currentRegion.weatherPayload.아침;
-  }, [currentRegion, timeSlot]);
+    const zoneBlock = jsonData && jsonData[currentRegion.zone];
+    if (zoneBlock && zoneBlock.weather && zoneBlock.weather[timeSlot]) {
+      return zoneBlock.weather[timeSlot];
+    }
+    return currentRegion.weatherBySlot[timeSlot] || currentRegion.weatherBySlot.아침;
+  }, [jsonData, currentRegion, timeSlot]);
+
+  const streetStyleList = useMemo(() => {
+    const zoneBlock = jsonData && jsonData[currentRegion.zone];
+    if (zoneBlock && Array.isArray(zoneBlock.top4) && zoneBlock.top4.length > 0) {
+      return zoneBlock.top4.map((entry, idx) => ({
+        id: entry.id || `zone-top-${idx}`,
+        name: entry.name || entry.label || '스타일',
+        pct: entry.pct ?? entry.ratio ?? 0,
+        img: entry.img || entry.image || 'assets/Img/coat.png',
+      }));
+    }
+    return currentRegion.streetStyles;
+  }, [jsonData, currentRegion]);
 
   const activeOutfit = useMemo(() => {
+    const zoneBlock = jsonData && jsonData[currentRegion.zone];
+    if (zoneBlock && zoneBlock.outfits && zoneBlock.outfits[team]) {
+      return {
+        title: '오늘의 추천',
+        comment: zoneBlock.outfits[team].comment || currentRegion.outfitByTeam[team].comment,
+        img: zoneBlock.outfits[team].img || currentRegion.outfitByTeam[team].img,
+      };
+    }
     return currentRegion.outfitByTeam[team] || currentRegion.outfitByTeam['팀 추워'];
-  }, [currentRegion, team]);
-
-  useEffect(() => {
-    let active = true;
-    supabase
-      .rpc('get_recommendations_by_weather', {
-        p_region: currentRegion.fullRegion,
-        p_weather: currentRegion.weatherPayload,
-      })
-      .then(({ data, error }) => {
-        if (!active || error) return;
-        if (Array.isArray(data)) setRpcData(data);
-        else if (Array.isArray(data?.items)) setRpcData(data.items);
-      })
-      .catch(() => {});
-    return () => {
-      active = false;
-    };
-  }, [currentRegion]);
+  }, [jsonData, currentRegion, team]);
 
   const recommendedItems = useMemo(() => {
+    const zoneBlock = jsonData && jsonData[currentRegion.zone];
+    const sourceList =
+      zoneBlock && Array.isArray(zoneBlock.recommendations) && zoneBlock.recommendations.length > 0
+        ? zoneBlock.recommendations.map((row, idx) => ({
+            id: row.id || `rec-${idx}`,
+            category: row.category || '추천',
+            name: row.name || row.title || '추천 의류',
+            comment: row.comment || row.description || activeOutfit.comment,
+            img: row.img || row.image || 'assets/Img/coat.png',
+          }))
+        : FALLBACK_CLOTHING;
+
     const closetTokens = closetInput
       .split(',')
       .map((s) => s.trim().toLowerCase())
       .filter(Boolean);
 
-    const feedbackShift =
+    const shift =
       feedback === '더 시원하게' ? 1 : feedback === '더 따뜻하게' ? -1 : 0;
-    const effectiveTemp = slotWeather.temp + feedbackShift;
+    const adjustedTemp = Number(slotWeather.temp ?? 10) + shift;
 
-    const baseList =
-      rpcData.length > 0
-        ? rpcData.map((row, idx) => ({
-            id: row.id || `rpc-${idx}`,
-            category: row.category || '추천',
-            name: row.name || row.title || '추천 의류',
-            keywords: Array.isArray(row.keywords) ? row.keywords : [],
-            comment: row.comment || row.description || activeOutfit.comment,
-            img: row.img || row.image || 'assets/Img/coat.png',
-          }))
-        : BASE_OUTFIT_ITEMS;
-
-    return [...baseList]
+    return [...sourceList]
       .map((item) => {
         const matchesCloset = closetTokens.some(
           (tok) =>
             item.name.toLowerCase().includes(tok) ||
             item.category.toLowerCase().includes(tok) ||
-            item.keywords.some((k) => String(k).toLowerCase().includes(tok))
+            item.comment.toLowerCase().includes(tok)
         );
 
-        let tempScore = 0;
-        if (effectiveTemp <= 9) {
-          tempScore = item.name.includes('패딩') || item.name.includes('코트') ? 3 : 1;
-        } else if (effectiveTemp <= 19) {
-          tempScore = item.name.includes('자켓') || item.name.includes('롱슬리브') || item.name.includes('코트') ? 3 : 1;
+        let tempWeight = 0;
+        if (adjustedTemp <= 9) {
+          tempWeight = item.name.includes('패딩') || item.name.includes('코트') ? 3 : 1;
+        } else if (adjustedTemp <= 19) {
+          tempWeight =
+            item.name.includes('자켓') ||
+            item.name.includes('코트') ||
+            item.name.includes('롱슬리브')
+              ? 3
+              : 1;
         } else {
-          tempScore = item.name.includes('반팔') || item.name.includes('롱슬리브') ? 3 : 1;
+          tempWeight = item.name.includes('반팔') || item.name.includes('롱슬리브') ? 3 : 1;
         }
 
         return {
           ...item,
           fromCloset: matchesCloset,
-          score: (matchesCloset ? 10 : 0) + tempScore,
+          score: (matchesCloset ? 10 : 0) + tempWeight,
         };
       })
       .sort((a, b) => b.score - a.score);
-  }, [rpcData, closetInput, feedback, slotWeather.temp, activeOutfit.comment]);
+  }, [jsonData, currentRegion.zone, activeOutfit.comment, closetInput, feedback, slotWeather.temp]);
+
+  const handleSetCurrentLocation = () => {
+    setRegionId('seongsu');
+    setLocationModalOpen(false);
+    setLocationQuery('');
+  };
 
   const handleAddReview = (e) => {
     e.preventDefault();
     const trimmed = reviewInput.trim();
-    if (!trimmed) return;
     setReviews((prev) => [
+      ...prev,
       {
         id: Date.now(),
         author: nickname || '주주',
@@ -409,7 +429,6 @@ export default function App() {
         tag: reviewTag,
         text: trimmed,
       },
-      ...prev,
     ]);
     setReviewInput('');
   };
@@ -426,8 +445,8 @@ export default function App() {
 
             {onboardingStep === 1 && (
               <div className="onboarding-card">
-                <h2>사용할 닉네임을 입력해주세요</h2>
-                <p className="muted-desc">별도 로그인 없이 브라우저에 닉네임이 저장됩니다.</p>
+                <h2>닉네임을 입력해주세요</h2>
+                <p className="muted-desc">입력한 닉네임은 브라우저에 저장됩니다.</p>
                 <input
                   type="text"
                   className="text-field"
@@ -447,8 +466,8 @@ export default function App() {
 
             {onboardingStep === 2 && (
               <div className="onboarding-card">
-                <h2>어느 지역의 날씨를 볼까요?</h2>
-                <p className="muted-desc">시·구·동으로 위치를 선택할 수 있습니다.</p>
+                <h2>위치를 선택해주세요</h2>
+                <p className="muted-desc">시·구·동 기준으로 날씨와 권역 스타일을 보여줍니다.</p>
                 <div className="choice-stack">
                   {REGION_OPTIONS.map((r) => (
                     <button
@@ -483,8 +502,8 @@ export default function App() {
 
             {onboardingStep === 3 && (
               <div className="onboarding-card">
-                <h2>평소 체질 그룹을 선택해주세요</h2>
-                <p className="muted-desc">선택한 체질에 맞춰 오늘의 추천 코디를 보여줍니다.</p>
+                <h2>체질 그룹을 선택해주세요</h2>
+                <p className="muted-desc">체질에 맞춰 추천 코디를 보여줍니다.</p>
                 <div className="choice-stack">
                   {['팀 추워', '팀 딱좋아', '팀 더워'].map((t) => (
                     <button
@@ -551,21 +570,21 @@ export default function App() {
                     className="region-chip"
                     onClick={() => setLocationModalOpen(true)}
                   >
-                    ● {currentRegion.label} ▾
+                    ● {currentRegion.label}
                   </button>
                   <div className="temp-display">{slotWeather.temp}°C</div>
                   <div className="weather-summary">
                     {slotWeather.condition} · 체감 {slotWeather.feelsLike}°C
                   </div>
                 </div>
-                <div className="weather-badge-group">
-                  <span className="team-pill">{team}</span>
-                </div>
+                <div className="sun-emblem" aria-hidden="true" />
               </div>
 
               <div className="weather-grid">
                 <div className="metric-cell">
-                  <strong>{slotWeather.high}° / {slotWeather.low}°</strong>
+                  <strong>
+                    {slotWeather.high}° / {slotWeather.low}°
+                  </strong>
                   <span>최고 / 최저</span>
                 </div>
                 <div className="metric-cell">
@@ -590,9 +609,10 @@ export default function App() {
               </div>
 
               <div className="street-scroll-row">
-                {currentRegion.streetStyles.map((item) => (
+                {streetStyleList.map((item) => (
                   <div key={item.id} className="street-card">
                     <div className="street-img-box">
+                      <span className="street-pct-badge">{item.pct}%</span>
                       <img
                         src={assetUrl(item.img)}
                         alt={item.name}
@@ -680,8 +700,7 @@ export default function App() {
         {screen === 'outfit' && (
           <div className="screen-scroll">
             <header className="top-header">
-              <span className="brand-title">오늘의 코디</span>
-              <span className="region-inline">{currentRegion.label} · {team}</span>
+              <span className="brand-title">옷늘날씨</span>
             </header>
 
             <div className="detail-photo-wrap">
@@ -695,6 +714,20 @@ export default function App() {
             <section className="section-block">
               <h2>{activeOutfit.title}</h2>
               <p className="detail-comment">{activeOutfit.comment}</p>
+
+              <div className="review-feed">
+                {reviews.map((rv) => (
+                  <div key={rv.id} className="review-card">
+                    <div className="review-avatar" aria-hidden="true" />
+                    <div className="review-content-col">
+                      <div className="review-header">
+                        {rv.author} · {rv.team} · {rv.tag}
+                      </div>
+                      {rv.text && <p className="review-body">{rv.text}</p>}
+                    </div>
+                  </div>
+                ))}
+              </div>
 
               <form onSubmit={handleAddReview} className="review-composer">
                 <div className="tag-selector">
@@ -714,78 +747,75 @@ export default function App() {
                   className="text-field"
                   value={reviewInput}
                   onChange={(e) => setReviewInput(e.target.value)}
-                  placeholder="오늘 코디 체감 리뷰를 남겨보세요"
+                  placeholder="리뷰를 입력하세요"
                 />
-                <button type="submit" className="primary-btn">
-                  리뷰 등록
+                <button type="submit" className="review-submit-pill">
+                  리뷰 작성하기
                 </button>
               </form>
-
-              <div className="review-feed">
-                {reviews.map((rv) => (
-                  <div key={rv.id} className="review-card">
-                    <div className="review-header">
-                      <strong>{rv.author}</strong>
-                      <span>{rv.team} · {rv.tag}</span>
-                    </div>
-                    <p className="review-body">{rv.text}</p>
-                  </div>
-                ))}
-              </div>
             </section>
           </div>
         )}
 
         {screen === 'my' && (
           <div className="screen-scroll">
-            <header className="top-header">
-              <span className="brand-title">MY</span>
-              <button
-                type="button"
-                className="text-link-btn"
-                onClick={() => {
-                  setOnboardingStep(1);
-                  setScreen('onboarding');
-                }}
-              >
-                초기 설정 다시보기
+            <div className="my-center-head">MY</div>
+
+            <section className="my-profile-box">
+              <div className="my-avatar-circle" aria-hidden="true" />
+              <div className="my-nickname">{nickname}</div>
+              <div className="my-team-label">{team}</div>
+            </section>
+
+            <section className="my-menu-group">
+              <div className="my-menu-item">
+                <span>내 정보 관리</span>
+                <span>&gt;</span>
+              </div>
+
+              <div className="my-edit-box">
+                <label className="field-label">닉네임</label>
+                <input
+                  type="text"
+                  className="text-field"
+                  value={nickname}
+                  onChange={(e) => setNickname(e.target.value)}
+                />
+
+                <label className="field-label">체질 그룹</label>
+                <select
+                  className="text-field"
+                  value={team}
+                  onChange={(e) => setTeam(e.target.value)}
+                >
+                  <option value="팀 추워">팀 추워</option>
+                  <option value="팀 딱좋아">팀 딱좋아</option>
+                  <option value="팀 더워">팀 더워</option>
+                </select>
+
+                <label className="field-label">내 옷장</label>
+                <input
+                  type="text"
+                  className="text-field"
+                  value={closetInput}
+                  onChange={(e) => setClosetInput(e.target.value)}
+                />
+              </div>
+
+              <div className="my-menu-item">
+                <span>작성한 리뷰 {reviews.length}개</span>
+                <span>&gt;</span>
+              </div>
+            </section>
+
+            <div className="my-footer-actions">
+              <button type="button" className="my-action-btn">
+                로그아웃
               </button>
-            </header>
-
-            <section className="profile-card">
-              <div className="profile-name">{nickname}</div>
-              <div className="profile-sub">{team} · {currentRegion.fullRegion}</div>
-            </section>
-
-            <section className="section-block form-stack">
-              <label className="field-label">닉네임</label>
-              <input
-                type="text"
-                className="text-field"
-                value={nickname}
-                onChange={(e) => setNickname(e.target.value)}
-              />
-
-              <label className="field-label">체질 그룹</label>
-              <select
-                className="text-field"
-                value={team}
-                onChange={(e) => setTeam(e.target.value)}
-              >
-                <option value="팀 추워">팀 추워</option>
-                <option value="팀 딱좋아">팀 딱좋아</option>
-                <option value="팀 더워">팀 더워</option>
-              </select>
-
-              <label className="field-label">내 옷장 키워드 (쉼표로 구분)</label>
-              <input
-                type="text"
-                className="text-field"
-                value={closetInput}
-                onChange={(e) => setClosetInput(e.target.value)}
-                placeholder="예: 니트, 코트, 반팔"
-              />
-            </section>
+              <button type="button" className="my-action-btn danger">
+                회원탈퇴
+              </button>
+            </div>
           </div>
         )}
 
@@ -793,13 +823,13 @@ export default function App() {
           <div className="modal-backdrop" role="dialog" aria-modal="true">
             <div className="modal-sheet">
               <div className="modal-head">
-                <strong>위치 선택</strong>
+                <strong>내 위치 선택</strong>
                 <button
                   type="button"
                   className="close-btn"
                   onClick={() => setLocationModalOpen(false)}
                 >
-                  닫기
+                  ×
                 </button>
               </div>
               <input
@@ -809,6 +839,13 @@ export default function App() {
                 onChange={(e) => setLocationQuery(e.target.value)}
                 placeholder="읍, 면, 동으로 검색"
               />
+              <button
+                type="button"
+                className="current-loc-btn"
+                onClick={handleSetCurrentLocation}
+              >
+                현재 위치로 설정
+              </button>
               <div className="location-list">
                 {filteredRegions.map((r) => (
                   <button

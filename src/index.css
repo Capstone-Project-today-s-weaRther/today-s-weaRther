@@ -65,8 +65,8 @@ body {
 }
 
 .weather-panel {
-  background: linear-gradient(160deg, #eff6ff 0%, #f8fafc 100%);
-  border: 1px solid #dbeafe;
+  background-color: #f8fafc;
+  border: 1px solid #e5e7eb;
   border-radius: 20px;
   padding: 16px;
   margin-bottom: 20px;
@@ -75,20 +75,19 @@ body {
 .weather-top-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .region-chip {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 5px 10px;
+  padding: 4px 10px;
   border-radius: 999px;
-  border: 1px solid #bfdbfe;
-  background-color: #ffffff;
+  border: 1px solid #bbf7d0;
+  background-color: #f0fdf4;
   font-size: 13px;
   font-weight: 700;
-  color: #1e3a8a;
+  color: #15803d;
   cursor: pointer;
 }
 
@@ -102,18 +101,16 @@ body {
 
 .weather-summary {
   font-size: 13px;
-  color: #475569;
+  color: #4b5563;
   margin-top: 2px;
 }
 
-.team-pill {
-  display: inline-block;
-  padding: 5px 10px;
-  border-radius: 999px;
-  background-color: #1e3a8a;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 700;
+.sun-emblem {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: #facc15;
+  flex-shrink: 0;
 }
 
 .weather-grid {
@@ -122,7 +119,7 @@ body {
   gap: 8px;
   margin-top: 14px;
   padding-top: 12px;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid #e5e7eb;
 }
 
 .metric-cell {
@@ -141,7 +138,7 @@ body {
 
 .metric-cell span {
   font-size: 11px;
-  color: #64748b;
+  color: #6b7280;
 }
 
 .section-block {
@@ -161,10 +158,9 @@ body {
   font-weight: 800;
 }
 
-.meta-caption,
-.region-inline {
+.meta-caption {
   font-size: 11px;
-  color: #6b7280;
+  color: #9ca3af;
 }
 
 .text-link-btn {
@@ -193,9 +189,22 @@ body {
 }
 
 .street-img-box {
+  position: relative;
   width: 100%;
   height: 112px;
   background-color: #f3f4f6;
+}
+
+.street-pct-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background-color: #1d4ed8;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .street-img {
@@ -214,7 +223,7 @@ body {
 }
 
 .street-pct {
-  color: #1e3a8a;
+  color: #111827;
 }
 
 .feedback-bar {
@@ -236,8 +245,8 @@ body {
 }
 
 .feedback-chip.active {
-  background-color: #1e3a8a;
-  border-color: #1e3a8a;
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
   color: #ffffff;
 }
 
@@ -252,7 +261,7 @@ body {
 
 .hero-outfit-img {
   width: 100%;
-  height: 180px;
+  height: 190px;
   object-fit: cover;
   display: block;
 }
@@ -331,7 +340,7 @@ body {
 
 .detail-photo-wrap {
   width: 100%;
-  height: 220px;
+  height: 240px;
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 14px;
@@ -345,17 +354,52 @@ body {
 }
 
 .detail-comment {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   font-size: 13px;
   line-height: 1.5;
-  color: #374151;
+  color: #4b5563;
+}
+
+.review-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.review-card {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.review-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #bae6fd;
+  flex-shrink: 0;
+}
+
+.review-content-col {
+  flex: 1;
+}
+
+.review-header {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.review-body {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: #111827;
 }
 
 .review-composer {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 16px;
 }
 
 .tag-selector {
@@ -375,64 +419,92 @@ body {
 }
 
 .tag-pill.active {
-  background-color: #111827;
-  border-color: #111827;
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
   color: #ffffff;
 }
 
-.review-feed {
+.review-submit-pill {
+  padding: 11px 16px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  cursor: pointer;
+}
+
+.my-center-head {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.my-profile-box {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.review-card {
-  padding: 10px 12px;
-  border-radius: 12px;
-  background-color: #f9fafb;
-  border: 1px solid #e5e7eb;
+.my-avatar-circle {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background-color: #bae6fd;
+  margin-bottom: 10px;
 }
 
-.review-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  margin-bottom: 4px;
-}
-
-.review-header span {
-  color: #6b7280;
-}
-
-.review-body {
-  margin: 0;
-  font-size: 13px;
-  color: #1f2937;
-}
-
-.profile-card {
-  padding: 16px;
-  border-radius: 16px;
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
-  margin-bottom: 16px;
-}
-
-.profile-name {
+.my-nickname {
   font-size: 18px;
   font-weight: 800;
 }
 
-.profile-sub {
+.my-team-label {
   font-size: 12px;
-  color: #64748b;
-  margin-top: 4px;
+  color: #6b7280;
+  margin-top: 2px;
 }
 
-.form-stack {
+.my-menu-group {
+  border-top: 1px solid #f3f4f6;
+}
+
+.my-menu-item {
+  padding: 14px 4px;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.my-edit-box {
+  padding: 12px 4px;
+  border-bottom: 1px solid #f3f4f6;
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.my-footer-actions {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.my-action-btn {
+  border: none;
+  background: none;
+  font-size: 12px;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.my-action-btn.danger {
+  color: #ef4444;
 }
 
 .field-label {
@@ -454,7 +526,7 @@ body {
   padding: 11px 14px;
   border-radius: 12px;
   border: none;
-  background-color: #1e3a8a;
+  background-color: #1d4ed8;
   color: #ffffff;
   font-size: 14px;
   font-weight: 700;
@@ -494,7 +566,7 @@ body {
   padding: 4px 10px;
   border-radius: 999px;
   background-color: #eff6ff;
-  color: #1e3a8a;
+  color: #1d4ed8;
 }
 
 .onboarding-card h2 {
@@ -528,7 +600,7 @@ body {
 }
 
 .choice-card.selected {
-  border-color: #1e3a8a;
+  border-color: #1d4ed8;
   background-color: #eff6ff;
 }
 
@@ -564,9 +636,22 @@ body {
 .close-btn {
   background: none;
   border: none;
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 700;
   color: #4b5563;
+  cursor: pointer;
+}
+
+.current-loc-btn {
+  margin-top: 8px;
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1px solid #bfdbfe;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
 }
 
@@ -590,7 +675,7 @@ body {
 }
 
 .location-row.active {
-  border-color: #1e3a8a;
+  border-color: #1d4ed8;
   background-color: #eff6ff;
 }
 
@@ -617,6 +702,6 @@ body {
 }
 
 .tab-btn.active {
-  color: #1e3a8a;
-  border-top: 2px solid #1e3a8a;
+  color: #1d4ed8;
+  border-top: 2px solid #1d4ed8;
 }
