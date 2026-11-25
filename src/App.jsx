@@ -7,834 +7,739 @@ const assetUrl = (relativePath) => {
   return `${BASE}${clean}`;
 };
 
-const REGION_OPTIONS = [
+const REGION_CATALOG = [
   {
     id: 'seongsu',
-    label: '성수',
+    label: '성수동2가',
     sido: '서울특별시',
     sigungu: '성동구',
     dong: '성수동2가',
     zone: '서울동권',
-    fullRegion: '서울특별시 성동구 성수동2가',
-    updatedAt: '11. 24. 오후 06:00 기준',
-    weatherBySlot: {
-      아침: {
-        temp: 4,
-        feelsLike: 1,
-        condition: '맑음',
-        high: 7,
-        low: -1,
-        humidity: '55%',
-        wind: '2.1 m/s',
-        rainProb: '10%',
-      },
-      낮: {
-        temp: 11,
-        feelsLike: 10,
-        condition: '맑음',
-        high: 12,
-        low: 2,
-        humidity: '45%',
-        wind: '1.8 m/s',
-        rainProb: '10%',
-      },
-      저녁: {
-        temp: 3,
-        feelsLike: 0,
-        condition: '맑음',
-        high: 6,
-        low: -2,
-        humidity: '60%',
-        wind: '2.4 m/s',
-        rainProb: '20%',
-      },
-    },
-    streetStyles: [
-      { id: 'st-1', name: '롱패딩', pct: 38, img: 'assets/Img/padding.png' },
-      { id: 'st-2', name: '숏패딩', pct: 27, img: 'assets/Img/jacket.png' },
-      { id: 'st-3', name: '코트', pct: 21, img: 'assets/Img/coat.png' },
-      { id: 'st-4', name: '니트', pct: 14, img: 'assets/Img/long-sleeve.png' },
-    ],
-    outfitByTeam: {
-      '팀 추워': {
-        title: '오늘의 추천',
-        comment: '오늘 성수 아침은 쌀쌀하니 기모 이너와 도톰한 코트·패딩으로 따뜻하게 입어보세요.',
-        img: 'assets/Img/coat.png',
-      },
-      '팀 딱좋아': {
-        title: '오늘의 추천',
-        comment: '오늘 아침은 쌀쌀하니 니트에 코트를 걸쳐보세요.',
-        img: 'assets/Img/jacket.png',
-      },
-      '팀 더워': {
-        title: '오늘의 추천',
-        comment: '실내외 온도 차가 크니 통기성 좋은 상의에 탈착하기 쉬운 아우터를 맞춰보세요.',
-        img: 'assets/Img/long-sleeve.png',
-      },
-    },
+    fullAddress: '서울특별시 성동구 성수동2가',
+    temp: 24,
+    feelsLike: 26,
+    condition: '맑음',
+    high: 26,
+    low: 14,
+    humidity: '40%',
+    wind: '1.5 m/s',
+    rainProb: '0%',
   },
   {
     id: 'seogyo',
-    label: '서교',
+    label: '서교동',
     sido: '서울특별시',
     sigungu: '마포구',
     dong: '서교동',
     zone: '서울서권',
-    fullRegion: '서울특별시 마포구 서교동',
-    updatedAt: '11. 24. 오후 06:00 기준',
-    weatherBySlot: {
-      아침: {
-        temp: 16,
-        feelsLike: 16,
-        condition: '맑음',
-        high: 24,
-        low: 15,
-        humidity: '58%',
-        wind: '1.4 m/s',
-        rainProb: '10%',
-      },
-      낮: {
-        temp: 24,
-        feelsLike: 24,
-        condition: '맑음',
-        high: 26,
-        low: 15,
-        humidity: '48%',
-        wind: '1.5 m/s',
-        rainProb: '10%',
-      },
-      저녁: {
-        temp: 18,
-        feelsLike: 18,
-        condition: '맑음',
-        high: 21,
-        low: 15,
-        humidity: '54%',
-        wind: '1.7 m/s',
-        rainProb: '10%',
-      },
-    },
-    streetStyles: [
-      { id: 'sg-1', name: '긴팔/셔츠', pct: 42, img: 'assets/Img/long-sleeve.png' },
-      { id: 'sg-2', name: '반팔', pct: 28, img: 'assets/Img/short-sleeve.png' },
-      { id: 'sg-3', name: '가디건', pct: 18, img: 'assets/Img/jacket.png' },
-      { id: 'sg-4', name: '니트', pct: 12, img: 'assets/Img/coat.png' },
-    ],
-    outfitByTeam: {
-      '팀 추워': {
-        title: '오늘의 추천',
-        comment: '서교동은 바람이 불 수 있으니 긴팔 위에 가디건이나 얇은 자켓을 챙겨보세요.',
-        img: 'assets/Img/jacket.png',
-      },
-      '팀 딱좋아': {
-        title: '오늘의 추천',
-        comment: '가벼운 셔츠나 긴팔로 산뜻하게 입기 좋은 날씨예요.',
-        img: 'assets/Img/long-sleeve.png',
-      },
-      '팀 더워': {
-        title: '오늘의 추천',
-        comment: '따뜻한 기온이니 반팔이나 가벼운 상의 위주로 입어보세요.',
-        img: 'assets/Img/short-sleeve.png',
-      },
-    },
+    fullAddress: '서울특별시 마포구 서교동',
+    temp: 23,
+    feelsLike: 24,
+    condition: '맑음',
+    high: 25,
+    low: 13,
+    humidity: '45%',
+    wind: '1.7 m/s',
+    rainProb: '10%',
   },
   {
     id: 'yeoksam',
-    label: '역삼',
+    label: '역삼동',
     sido: '서울특별시',
     sigungu: '강남구',
     dong: '역삼동',
     zone: '서울남권',
-    fullRegion: '서울특별시 강남구 역삼동',
-    updatedAt: '11. 24. 오후 06:00 기준',
-    weatherBySlot: {
-      아침: {
-        temp: 8,
-        feelsLike: 6,
-        condition: '구름조금',
-        high: 15,
-        low: 6,
-        humidity: '52%',
-        wind: '1.9 m/s',
-        rainProb: '10%',
-      },
-      낮: {
-        temp: 15,
-        feelsLike: 14,
-        condition: '맑음',
-        high: 15,
-        low: 6,
-        humidity: '44%',
-        wind: '1.6 m/s',
-        rainProb: '10%',
-      },
-      저녁: {
-        temp: 9,
-        feelsLike: 7,
-        condition: '맑음',
-        high: 12,
-        low: 5,
-        humidity: '56%',
-        wind: '2.0 m/s',
-        rainProb: '10%',
-      },
-    },
-    streetStyles: [
-      { id: 'yk-1', name: '코트', pct: 36, img: 'assets/Img/coat.png' },
-      { id: 'yk-2', name: '니트', pct: 29, img: 'assets/Img/long-sleeve.png' },
-      { id: 'yk-3', name: '자켓', pct: 20, img: 'assets/Img/jacket.png' },
-      { id: 'yk-4', name: '패딩', pct: 15, img: 'assets/Img/padding.png' },
-    ],
-    outfitByTeam: {
-      '팀 추워': {
-        title: '오늘의 추천',
-        comment: '일교차가 있으니 니트와 함께 보온성 있는 아우터를 걸쳐보세요.',
-        img: 'assets/Img/coat.png',
-      },
-      '팀 딱좋아': {
-        title: '오늘의 추천',
-        comment: '단정한 셔츠·니트 조합에 자켓이나 코트를 매치해보세요.',
-        img: 'assets/Img/long-sleeve.png',
-      },
-      '팀 더워': {
-        title: '오늘의 추천',
-        comment: '활동량이 많다면 가벼운 상의 위주로 입어보세요.',
-        img: 'assets/Img/jacket.png',
-      },
-    },
+    fullAddress: '서울특별시 강남구 역삼동',
+    temp: 24,
+    feelsLike: 25,
+    condition: '맑음',
+    high: 26,
+    low: 14,
+    humidity: '42%',
+    wind: '1.6 m/s',
+    rainProb: '0%',
+  },
+  {
+    id: 'sangsu',
+    label: '상수동',
+    sido: '서울특별시',
+    sigungu: '마포구',
+    dong: '상수동',
+    zone: '서울서권',
+    fullAddress: '서울특별시 마포구 상수동',
+    temp: 22,
+    feelsLike: 23,
+    condition: '맑음',
+    high: 24,
+    low: 12,
+    humidity: '48%',
+    wind: '1.4 m/s',
+    rainProb: '10%',
   },
 ];
 
-const SENSITIVITY_OPTIONS = [
-  {
-    team: '팀 추워',
-    icon: '🧊',
-    label: '조금만 추워도 춥게 느껴요',
-    desc: '추위 민감형 · 보온 위주 추천',
-  },
-  {
-    team: '팀 딱좋아',
-    icon: '⚖️',
-    label: '보통이에요',
-    desc: '중립형 · 기온 기준 균형 추천',
-  },
-  {
-    team: '팀 더워',
-    icon: '🔥',
-    label: '조금만 더워도 덥게 느껴요',
-    desc: '더위 민감형 · 가볍고 쾌적한 추천',
-  },
+const STREET_TRENDS = [
+  { id: 'tr-1', name: '가디건 레이어드', img: 'assets/Img/jacket.png' },
+  { id: 'tr-2', name: '코튼 셔츠룩', img: 'assets/Img/long-sleeve.png' },
+  { id: 'tr-3', name: '라이트 아우터', img: 'assets/Img/coat.png' },
 ];
+
+const HOURLY_FORECAST = [
+  { time: '지금', temp: 27, rain: '0%', icon: 'sun' },
+  { time: '15시', temp: 26, rain: '0%', icon: 'sun' },
+  { time: '18시', temp: 25, rain: '10%', icon: 'sun' },
+  { time: '21시', temp: 24, rain: '10%', icon: 'cloud' },
+  { time: '00시', temp: 23, rain: '0%', icon: 'cloud' },
+  { time: '03시', temp: 22, rain: '0%', icon: 'cloud' },
+];
+
+const WEEKLY_FORECAST = [
+  { day: '오늘 (수)', cond: '맑음', high: 26, low: 14, rain: '0%' },
+  { day: '내일 (목)', cond: '맑음', high: 25, low: 13, rain: '10%' },
+  { day: '금요일', cond: '구름조금', high: 23, low: 12, rain: '20%' },
+  { day: '토요일', cond: '맑음', high: 24, low: 13, rain: '0%' },
+  { day: '일요일', cond: '맑음', high: 25, low: 14, rain: '0%' },
+  { day: '월요일', cond: '흐림', high: 21, low: 11, rain: '30%' },
+  { day: '화요일', cond: '맑음', high: 22, low: 11, rain: '10%' },
+];
+
+const OUTFIT_DETAIL = {
+  title: '얇은 가디건을 더한 미니멀 룩',
+  description:
+    '낮 기온은 따뜻하지만 아침·저녁 일교차와 실내 냉방 온도 차가 있어 가볍게 걸칠 수 있는 얇은 가디건을 매치한 미니멀 코디입니다.',
+  img: 'assets/Img/jacket.png',
+};
 
 const INITIAL_REVIEWS = [
-  { id: 1, author: '주주', team: '팀 추워', tag: '더워요', text: '' },
-  { id: 2, author: '주주', team: '팀 더워', tag: '딱 좋아요', text: 'ㅇㅇㅇㅇ' },
-  { id: 3, author: '주주', team: '팀 더워', tag: '딱 좋아요', text: 'dd' },
-];
-
-const FALLBACK_CLOTHING = [
   {
-    id: 'cl-1',
-    category: '아우터',
-    name: '울 블렌드 코트',
-    comment: '니트 위에 걸치기 좋은 단정한 코트예요.',
-    img: 'assets/Img/coat.png',
+    id: 1,
+    outfitTitle: '얇은 가디건을 더한 미니멀 룩',
+    author: '하늘구름',
+    date: '2026.11.24',
+    fitLabel: '적당했어요',
+    text: '낮에는 가디건 벗고 다니고 저녁에 걸치니까 딱 알맞았어요.',
   },
   {
-    id: 'cl-2',
-    category: '아우터',
-    name: '라이트 패딩',
-    comment: '아침·저녁 기온이 낮을 때 보온하기 좋아요.',
-    img: 'assets/Img/padding.png',
+    id: 2,
+    outfitTitle: '데일리 시즈 레이어드 룩',
+    author: '봄바람',
+    date: '2026.11.23',
+    fitLabel: '더웠어요',
+    text: '한낮 햇볕 아래에서는 얇은 이너 하나만 입어도 충분했어요.',
   },
   {
-    id: 'cl-3',
-    category: '아우터',
-    name: '소프트 자켓',
-    comment: '간절기에 가볍게 걸치기 좋은 아우터예요.',
-    img: 'assets/Img/jacket.png',
-  },
-  {
-    id: 'cl-4',
-    category: '상의',
-    name: '코튼 롱슬리브',
-    comment: '단독 또는 아우터 이너로 활용하기 좋은 상의예요.',
-    img: 'assets/Img/long-sleeve.png',
+    id: 3,
+    outfitTitle: '얇은 가디건을 더한 미니멀 룩',
+    author: '노을빛',
+    date: '2026.11.22',
+    fitLabel: '추웠어요',
+    text: '바람이 부는 저녁 시간에는 한 겹 더 챙기는 게 좋겠어요.',
   },
 ];
 
 export default function App() {
-  // 초기 진입 흐름: splash -> login -> onboarding(1: 위치, 2: 체질설문, 3: 닉네임/시작) -> home | outfit | my
-  const [screen, setScreen] = useState('splash');
-  const [onboardingStep, setOnboardingStep] = useState(1);
+  // screens:
+  // 'login' | 'location-perm' | 'onboarding-gender' | 'onboarding-temp' | 'onboarding-nickname'
+  // | 'loading' | 'home' | 'weather-detail' | 'outfit-detail' | 'review-write' | 'my' | 'my-reviews'
+  const [screen, setScreen] = useState('login');
+  const [googleSheetOpen, setGoogleSheetOpen] = useState(false);
+  const [googleStep, setGoogleStep] = useState('prompt'); // 'prompt' | 'account' | 'consent'
+  const [welcomeSheetOpen, setWelcomeSheetOpen] = useState(false);
+  const [locationSheetOpen, setLocationSheetOpen] = useState(false);
+  const [reviewDoneModalOpen, setReviewDoneModalOpen] = useState(false);
 
-  const [regionId, setRegionId] = useState(
-    () => localStorage.getItem('wearther_region') || 'seongsu'
-  );
-  const [locationModalOpen, setLocationModalOpen] = useState(false);
-  const [locationQuery, setLocationQuery] = useState('');
-  const [timeSlot, setTimeSlot] = useState('아침');
-
+  const [genderPref, setGenderPref] = useState(''); // '남성' | '여성'
+  const [tempPref, setTempPref] = useState('조금만 추워도 춥게 느껴요');
   const [nickname, setNickname] = useState(
-    () => localStorage.getItem('wearther_nickname') || '주주'
+    () => localStorage.getItem('wearther_nickname') || '졸업프로젝트'
   );
-  const [team, setTeam] = useState(
-    () => localStorage.getItem('wearther_team') || '팀 추워'
+  const [regionId, setRegionId] = useState(
+    () => localStorage.getItem('wearther_region_id') || 'seongsu'
   );
-  const [closetInput, setClosetInput] = useState(
-    () => localStorage.getItem('wearther_closet') || '니트, 코트'
-  );
-  const [feedback, setFeedback] = useState('딱 지금 정도로');
+
+  const [locationQuery, setLocationQuery] = useState('');
+  const [candidateRegionId, setCandidateRegionId] = useState('');
+
   const [reviews, setReviews] = useState(() => {
     try {
-      const saved = localStorage.getItem('wearther_reviews');
+      const saved = localStorage.getItem('wearther_reviews_v2');
       return saved ? JSON.parse(saved) : INITIAL_REVIEWS;
     } catch {
       return INITIAL_REVIEWS;
     }
   });
-  const [reviewInput, setReviewInput] = useState('');
-  const [reviewTag, setReviewTag] = useState('딱 좋아요');
-  const [jsonData, setJsonData] = useState(null);
-
-  useEffect(() => {
-    localStorage.setItem('wearther_region', regionId);
-  }, [regionId]);
+  const [fitChoice, setFitChoice] = useState(''); // '추웠어요' | '적당했어요' | '더웠어요'
+  const [reviewText, setReviewText] = useState('');
+  const [profilePhoto, setProfilePhoto] = useState('');
 
   useEffect(() => {
     localStorage.setItem('wearther_nickname', nickname);
   }, [nickname]);
 
   useEffect(() => {
-    localStorage.setItem('wearther_team', team);
-  }, [team]);
-
-  useEffect(() => {
-    localStorage.setItem('wearther_closet', closetInput);
-  }, [closetInput]);
+    localStorage.setItem('wearther_region_id', regionId);
+  }, [regionId]);
 
   useEffect(() => {
     try {
-      localStorage.setItem('wearther_reviews', JSON.stringify(reviews));
+      localStorage.setItem('wearther_reviews_v2', JSON.stringify(reviews));
     } catch {
       // ignore storage quota errors
     }
   }, [reviews]);
 
   useEffect(() => {
-    let active = true;
-    fetch(assetUrl('data/recommendations.json'))
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (active && data) setJsonData(data);
-      })
-      .catch(() => {});
-    return () => {
-      active = false;
-    };
-  }, []);
+    if (screen !== 'loading') return;
+    const timer = setTimeout(() => {
+      setScreen('home');
+      setWelcomeSheetOpen(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [screen]);
 
   const currentRegion = useMemo(
-    () => REGION_OPTIONS.find((r) => r.id === regionId) || REGION_OPTIONS[0],
+    () => REGION_CATALOG.find((r) => r.id === regionId) || REGION_CATALOG[0],
     [regionId]
   );
 
-  const filteredRegions = useMemo(() => {
+  const searchResults = useMemo(() => {
     const q = locationQuery.trim().toLowerCase();
-    if (!q) return REGION_OPTIONS;
-    return REGION_OPTIONS.filter(
+    if (!q) return [];
+    return REGION_CATALOG.filter(
       (r) =>
-        r.label.toLowerCase().includes(q) ||
-        r.sido.toLowerCase().includes(q) ||
-        r.sigungu.toLowerCase().includes(q) ||
         r.dong.toLowerCase().includes(q) ||
-        r.zone.toLowerCase().includes(q) ||
-        r.fullRegion.toLowerCase().includes(q)
+        r.sigungu.toLowerCase().includes(q) ||
+        r.sido.toLowerCase().includes(q) ||
+        r.fullAddress.toLowerCase().includes(q)
     );
   }, [locationQuery]);
 
-  const slotWeather = useMemo(() => {
-    const zoneBlock = jsonData && jsonData[currentRegion.zone];
-    if (zoneBlock && zoneBlock.weather && zoneBlock.weather[timeSlot]) {
-      return zoneBlock.weather[timeSlot];
-    }
-    return currentRegion.weatherBySlot[timeSlot] || currentRegion.weatherBySlot.아침;
-  }, [jsonData, currentRegion, timeSlot]);
+  const trimmedNickname = nickname.trim();
+  const isNicknameValid = trimmedNickname.length >= 2;
+  const isReviewSubmitEnabled = fitChoice.length > 0;
 
-  const streetStyleList = useMemo(() => {
-    const zoneBlock = jsonData && jsonData[currentRegion.zone];
-    if (zoneBlock && Array.isArray(zoneBlock.top4) && zoneBlock.top4.length > 0) {
-      return zoneBlock.top4.map((entry, idx) => ({
-        id: entry.id || `zone-top-${idx}`,
-        name: entry.name || entry.label || '스타일',
-        pct: entry.pct ?? entry.ratio ?? 0,
-        img: entry.img || entry.image || 'assets/Img/coat.png',
-      }));
-    }
-    return currentRegion.streetStyles;
-  }, [jsonData, currentRegion]);
+  const activeTab = useMemo(() => {
+    if (screen === 'outfit-detail' || screen === 'review-write') return 'outfit';
+    if (screen === 'my' || screen === 'my-reviews') return 'my';
+    return 'home';
+  }, [screen]);
 
-  const activeOutfit = useMemo(() => {
-    const zoneBlock = jsonData && jsonData[currentRegion.zone];
-    if (zoneBlock && zoneBlock.outfits && zoneBlock.outfits[team]) {
-      return {
-        title: '오늘의 추천',
-        comment: zoneBlock.outfits[team].comment || currentRegion.outfitByTeam[team].comment,
-        img: zoneBlock.outfits[team].img || currentRegion.outfitByTeam[team].img,
-      };
-    }
-    return currentRegion.outfitByTeam[team] || currentRegion.outfitByTeam['팀 추워'];
-  }, [jsonData, currentRegion, team]);
+  const showBottomBar =
+    screen === 'home' ||
+    screen === 'weather-detail' ||
+    screen === 'outfit-detail' ||
+    screen === 'my' ||
+    screen === 'my-reviews';
 
-  const recommendedItems = useMemo(() => {
-    const zoneBlock = jsonData && jsonData[currentRegion.zone];
-    const sourceList =
-      zoneBlock && Array.isArray(zoneBlock.recommendations) && zoneBlock.recommendations.length > 0
-        ? zoneBlock.recommendations.map((row, idx) => ({
-            id: row.id || `rec-${idx}`,
-            category: row.category || '추천',
-            name: row.name || row.title || '추천 의류',
-            comment: row.comment || row.description || activeOutfit.comment,
-            img: row.img || row.image || 'assets/Img/coat.png',
-          }))
-        : FALLBACK_CLOTHING;
-
-    const closetTokens = closetInput
-      .split(',')
-      .map((s) => s.trim().toLowerCase())
-      .filter(Boolean);
-
-    const shift =
-      feedback === '더 시원하게' ? 1 : feedback === '더 따뜻하게' ? -1 : 0;
-    const adjustedTemp = Number(slotWeather.temp ?? 10) + shift;
-
-    return [...sourceList]
-      .map((item) => {
-        const matchesCloset = closetTokens.some(
-          (tok) =>
-            item.name.toLowerCase().includes(tok) ||
-            item.category.toLowerCase().includes(tok) ||
-            item.comment.toLowerCase().includes(tok)
-        );
-
-        let tempWeight = 0;
-        if (adjustedTemp <= 9) {
-          tempWeight = item.name.includes('패딩') || item.name.includes('코트') ? 3 : 1;
-        } else if (adjustedTemp <= 19) {
-          tempWeight =
-            item.name.includes('자켓') ||
-            item.name.includes('코트') ||
-            item.name.includes('롱슬리브')
-              ? 3
-              : 1;
-        } else {
-          tempWeight = item.name.includes('반팔') || item.name.includes('롱슬리브') ? 3 : 1;
-        }
-
-        return {
-          ...item,
-          fromCloset: matchesCloset,
-          score: (matchesCloset ? 10 : 0) + tempWeight,
-        };
-      })
-      .sort((a, b) => b.score - a.score);
-  }, [jsonData, currentRegion.zone, activeOutfit.comment, closetInput, feedback, slotWeather.temp]);
-
-  const handleSetCurrentLocation = () => {
-    setRegionId('seongsu');
-    setLocationModalOpen(false);
+  const handleOpenLocationSheet = () => {
     setLocationQuery('');
+    setCandidateRegionId('');
+    setLocationSheetOpen(true);
   };
 
-  const handleAddReview = (e) => {
+  const handleUseCurrentLocation = () => {
+    setRegionId('seongsu');
+    setLocationSheetOpen(false);
+  };
+
+  const handleConfirmLocationChange = () => {
+    if (!candidateRegionId) return;
+    setRegionId(candidateRegionId);
+    setLocationSheetOpen(false);
+  };
+
+  const handleSubmitReview = (e) => {
     e.preventDefault();
-    const trimmed = reviewInput.trim();
-    setReviews((prev) => [
-      ...prev,
-      {
-        id: Date.now(),
-        author: nickname || '주주',
-        team,
-        tag: reviewTag,
-        text: trimmed,
-      },
-    ]);
-    setReviewInput('');
+    if (!isReviewSubmitEnabled) return;
+    const today = new Date();
+    const formattedDate = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(
+      2,
+      '0'
+    )}.${String(today.getDate()).padStart(2, '0')}`;
+
+    const newItem = {
+      id: Date.now(),
+      outfitTitle: OUTFIT_DETAIL.title,
+      author: trimmedNickname || '졸업프로젝트',
+      date: formattedDate,
+      fitLabel: fitChoice,
+      text: reviewText.trim(),
+    };
+
+    setReviews((prev) => [newItem, ...prev]);
+    setFitChoice('');
+    setReviewText('');
+    setReviewDoneModalOpen(true);
   };
 
-  const showBottomTab = screen === 'home' || screen === 'outfit' || screen === 'my';
+  const handlePhotoChange = (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === 'string') {
+        setProfilePhoto(reader.result);
+      }
+    };
+    reader.readAsDataURL(file);
+  };
 
   return (
-    <div className="wearther-shell">
-      <div className="wearther-phone">
-        {screen === 'splash' && (
-          <div className="screen-scroll splash-screen">
-            <div className="splash-center">
-              <div className="splash-sun-wrap">
-                <div className="splash-sun" />
-                <span className="splash-collar">WEAR</span>
-              </div>
-              <h1 className="splash-title">옷늘날씨</h1>
-              <p className="splash-sub">Today&apos;s weARther</p>
-              <p className="splash-copy">
-                날씨와 지금 이 거리의 옷차림을 맞춰보는 오늘의 코디 가이드
-              </p>
-            </div>
-            <div className="splash-bottom">
-              <button
-                type="button"
-                className="primary-btn full-btn"
-                onClick={() => setScreen('login')}
-              >
-                시작하기
-              </button>
-              <button
-                type="button"
-                className="ghost-link-btn"
-                onClick={() => setScreen('home')}
-              >
-                바로 홈으로 이동
-              </button>
-            </div>
-          </div>
-        )}
+    <div className="app-viewport">
+      <div className="phone-frame">
+        <div className="status-bar">
+          <span>16:01</span>
+          <span>5G · 100%</span>
+        </div>
 
+        {/* 1. 로그인 화면 */}
         {screen === 'login' && (
-          <div className="screen-scroll login-screen">
-            <div className="onboarding-top-row">
-              <button
-                type="button"
-                className="back-link-btn"
-                onClick={() => setScreen('splash')}
-              >
-                &lt; 이전
-              </button>
-              <span className="step-pill">로그인</span>
+          <div className="screen-body login-body">
+            <div className="login-center">
+              <div className="logo-mark-box" aria-hidden="true">
+                <svg viewBox="0 0 48 48" width="32" height="32" fill="none">
+                  <path
+                    d="M15 11L20 8C21.5 10 26.5 10 28 8L33 11L40 16L36 24L31 21V39H17V21L12 24L8 16L15 11Z"
+                    stroke="#ffffff"
+                    strokeWidth="2.4"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              <h1 className="app-title">옷늘날씨</h1>
+              <p className="app-subtitle">Today&apos;s WEARther</p>
             </div>
 
-            <div className="login-hero">
-              <div className="mini-sun-badge" />
-              <h2>옷늘날씨에 오신 것을 환영해요</h2>
-              <p className="muted-desc">
-                간편 시작 후 위치와 평소 체감 성향을 설정하면 맞춤 코디를 보여드려요.
-              </p>
-            </div>
-
-            <div className="choice-stack">
+            <div className="login-footer">
               <button
                 type="button"
-                className="social-btn primary-social"
+                className="google-login-btn"
                 onClick={() => {
-                  setOnboardingStep(1);
-                  setScreen('onboarding');
+                  setGoogleStep('prompt');
+                  setGoogleSheetOpen(true);
                 }}
               >
-                Google 계정으로 시작하기
-              </button>
-              <button
-                type="button"
-                className="social-btn"
-                onClick={() => {
-                  setOnboardingStep(1);
-                  setScreen('onboarding');
-                }}
-              >
-                게스트로 온보딩 진행하기
+                <span className="g-badge" aria-hidden="true">
+                  G
+                </span>
+                <span>구글로 로그인/회원가입</span>
               </button>
             </div>
           </div>
         )}
 
-        {screen === 'onboarding' && (
-          <div className="screen-scroll onboarding-screen">
-            <div className="onboarding-top-row">
-              <span className="brand-title">옷늘날씨</span>
-              <span className="step-pill">{onboardingStep} / 3</span>
+        {/* 2. 위치 권한 화면 */}
+        {screen === 'location-perm' && (
+          <div className="screen-body step-body">
+            <div className="step-header-row">
+              <button
+                type="button"
+                className="icon-back-btn"
+                onClick={() => setScreen('login')}
+                aria-label="뒤로가기"
+              >
+                ←
+              </button>
+              <span className="mini-tag">위치 설정</span>
+              <span className="spacer-24" />
             </div>
 
-            <div className="progress-track">
-              <div
-                className="progress-fill"
-                style={{ width: `${(onboardingStep / 3) * 100}%` }}
-              />
+            <div className="perm-center">
+              <div className="pin-circle" aria-hidden="true">
+                📍
+              </div>
+              <span className="eyebrow-sky">위치 정보 안내</span>
+              <h2 className="step-title center-text">지금 있는 곳의 날씨를 확인할게요</h2>
+              <p className="step-desc center-text">
+                위치 정보는 현재 날씨와 주변 거리 스타일을 안내하는 데에만 사용됩니다.
+              </p>
             </div>
 
-            {onboardingStep === 1 && (
-              <div className="onboarding-card">
-                <h2>어느 지역의 날씨를 확인할까요?</h2>
-                <p className="muted-desc">
-                  선택한 위치의 날씨와 해당 권역의 거리 스타일 TOP 4를 보여줍니다.
-                </p>
-                <div className="choice-stack">
-                  {REGION_OPTIONS.map((r) => (
-                    <button
-                      key={r.id}
-                      type="button"
-                      className={`choice-card ${regionId === r.id ? 'selected' : ''}`}
-                      onClick={() => setRegionId(r.id)}
-                    >
-                      <strong>{r.label}</strong>
-                      <span>{r.fullRegion} · {r.zone}</span>
-                    </button>
-                  ))}
-                </div>
-                <div className="row-actions">
-                  <button
-                    type="button"
-                    className="secondary-btn"
-                    onClick={() => setScreen('login')}
-                  >
-                    이전
-                  </button>
-                  <button
-                    type="button"
-                    className="primary-btn"
-                    onClick={() => setOnboardingStep(2)}
-                  >
-                    다음
-                  </button>
-                </div>
-              </div>
-            )}
+            <div className="bottom-btn-stack">
+              <button
+                type="button"
+                className="sky-primary-btn"
+                onClick={() => {
+                  setRegionId('seongsu');
+                  setScreen('onboarding-gender');
+                }}
+              >
+                위치 사용을 허용하고 계속하기
+              </button>
+              <button
+                type="button"
+                className="white-outline-btn"
+                onClick={() => {
+                  handleOpenLocationSheet();
+                  setScreen('onboarding-gender');
+                }}
+              >
+                지역 직접 선택
+              </button>
+            </div>
+          </div>
+        )}
 
-            {onboardingStep === 2 && (
-              <div className="onboarding-card">
-                <h2>평소 추위나 더위를 얼마나 타시나요?</h2>
-                <p className="muted-desc">
-                  체질 성향에 따라 오늘의 추천 코디와 그룹({team})이 설정됩니다.
-                </p>
-                <div className="choice-stack">
-                  {SENSITIVITY_OPTIONS.map((opt) => (
-                    <button
-                      key={opt.team}
-                      type="button"
-                      className={`choice-card ${team === opt.team ? 'selected' : ''}`}
-                      onClick={() => setTeam(opt.team)}
-                    >
-                      <strong>
-                        {opt.icon} {opt.label} ({opt.team})
-                      </strong>
-                      <span>{opt.desc}</span>
-                    </button>
-                  ))}
-                </div>
-                <div className="row-actions">
-                  <button
-                    type="button"
-                    className="secondary-btn"
-                    onClick={() => setOnboardingStep(1)}
-                  >
-                    이전
-                  </button>
-                  <button
-                    type="button"
-                    className="primary-btn"
-                    onClick={() => setOnboardingStep(3)}
-                  >
-                    다음
-                  </button>
-                </div>
-              </div>
-            )}
+        {/* 3. 온보딩 1/3 성별 코디 선택 */}
+        {screen === 'onboarding-gender' && (
+          <div className="screen-body step-body">
+            <div className="step-header-row">
+              <button
+                type="button"
+                className="icon-back-btn"
+                onClick={() => setScreen('location-perm')}
+                aria-label="뒤로가기"
+              >
+                ←
+              </button>
+              <span className="step-counter">1/3</span>
+              <span className="spacer-24" />
+            </div>
 
-            {onboardingStep === 3 && (
-              <div className="onboarding-card">
-                <h2>앱에서 사용할 닉네임을 입력해주세요</h2>
-                <p className="muted-desc">
-                  입력한 닉네임과 설정은 브라우저에 저장되며 언제든 MY에서 바꿀 수 있어요.
-                </p>
+            <div className="step-content">
+              <h2 className="step-title">옷늘날씨에서 어떤 성별의 코디를 찾고 있나요?</h2>
+              <p className="step-desc">추천 코디 스타일을 골라주세요.</p>
+
+              <div className="gender-grid">
+                {['남성', '여성'].map((g) => (
+                  <button
+                    key={g}
+                    type="button"
+                    className={`gender-toggle-btn ${genderPref === g ? 'selected' : ''}`}
+                    onClick={() => setGenderPref(g)}
+                  >
+                    {g}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="bottom-btn-stack">
+              <button
+                type="button"
+                className={`sky-primary-btn ${!genderPref ? 'disabled' : ''}`}
+                disabled={!genderPref}
+                onClick={() => setScreen('onboarding-temp')}
+              >
+                다음 단계
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* 4. 온보딩 2/3 체감 온도 */}
+        {screen === 'onboarding-temp' && (
+          <div className="screen-body step-body">
+            <div className="step-header-row">
+              <button
+                type="button"
+                className="icon-back-btn"
+                onClick={() => setScreen('onboarding-gender')}
+                aria-label="뒤로가기"
+              >
+                ←
+              </button>
+              <span className="step-counter">2/3</span>
+              <span className="spacer-24" />
+            </div>
+
+            <div className="step-content">
+              <h2 className="step-title">평소 추위나 더위를 얼마나 타는 편이신가요?</h2>
+              <p className="step-desc">개인 체감 온도를 반영해 옷차림을 맞춰드려요.</p>
+
+              <div className="radio-list">
+                {[
+                  '조금만 추워도 춥게 느껴요',
+                  '보통이에요',
+                  '조금만 더워도 덥게 느껴요',
+                ].map((opt) => {
+                  const active = tempPref === opt;
+                  return (
+                    <button
+                      key={opt}
+                      type="button"
+                      className={`radio-row-btn ${active ? 'selected' : ''}`}
+                      onClick={() => setTempPref(opt)}
+                    >
+                      <span className={`radio-dot ${active ? 'active' : ''}`} />
+                      <span>{opt}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="bottom-btn-stack">
+              <button
+                type="button"
+                className="sky-primary-btn"
+                onClick={() => setScreen('onboarding-nickname')}
+              >
+                다음 단계
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* 5. 온보딩 3/3 닉네임 */}
+        {screen === 'onboarding-nickname' && (
+          <div className="screen-body step-body">
+            <div className="step-header-row">
+              <button
+                type="button"
+                className="icon-back-btn"
+                onClick={() => setScreen('onboarding-temp')}
+                aria-label="뒤로가기"
+              >
+                ←
+              </button>
+              <span className="step-counter">3/3</span>
+              <span className="spacer-24" />
+            </div>
+
+            <div className="step-content">
+              <h2 className="step-title">옷늘날씨에서 사용할 닉네임을 입력해주세요</h2>
+              <p className="step-desc">최소 2자 이상 입력해주세요.</p>
+
+              <div className="underline-field-wrap">
                 <input
                   type="text"
-                  className="text-field"
+                  className="underline-input"
                   value={nickname}
                   onChange={(e) => setNickname(e.target.value)}
-                  placeholder="닉네임 입력"
+                  placeholder="닉네임을 입력하세요"
+                  maxLength={16}
                 />
-
-                <div className="welcome-summary-box">
-                  <div className="welcome-badge">{team}</div>
-                  <div className="welcome-text">
-                    어서오세요, <strong>{team} {nickname || '주주'}님</strong>!
-                  </div>
-                  <div className="welcome-sub">
-                    선택 위치: {currentRegion.label} ({currentRegion.fullRegion})
-                  </div>
-                </div>
-
-                <div className="row-actions">
-                  <button
-                    type="button"
-                    className="secondary-btn"
-                    onClick={() => setOnboardingStep(2)}
-                  >
-                    이전
-                  </button>
-                  <button
-                    type="button"
-                    className="primary-btn"
-                    onClick={() => setScreen('home')}
-                  >
-                    시작하기
-                  </button>
+                <div className="underline-meta">
+                  <span>
+                    {trimmedNickname.length === 0
+                      ? '닉네임을 입력해주세요'
+                      : trimmedNickname.length < 2
+                      ? '2자 이상 입력해주세요'
+                      : '사용 가능한 닉네임입니다'}
+                  </span>
+                  <span>{trimmedNickname.length}/16</span>
                 </div>
               </div>
-            )}
+            </div>
+
+            <div className="bottom-btn-stack">
+              <button
+                type="button"
+                className={`sky-primary-btn ${!isNicknameValid ? 'disabled' : ''}`}
+                disabled={!isNicknameValid}
+                onClick={() => setScreen('loading')}
+              >
+                회원가입하기
+              </button>
+            </div>
           </div>
         )}
 
+        {/* 6. 로딩 화면 */}
+        {screen === 'loading' && (
+          <div className="screen-body loading-body">
+            <div className="sky-spinner" aria-hidden="true" />
+            <p className="loading-text">
+              {trimmedNickname || '졸업프로젝트'} 님이 오늘 입을 옷을 찾고있어요
+            </p>
+          </div>
+        )}
+
+        {/* 7. 홈 화면 */}
         {screen === 'home' && (
-          <div className="screen-scroll">
-            <header className="top-header">
-              <button
-                type="button"
-                className="brand-title-btn"
-                onClick={() => {
-                  setOnboardingStep(1);
-                  setScreen('onboarding');
-                }}
-              >
-                옷늘날씨
-              </button>
-              <select
-                aria-label="시간대 선택"
-                className="slot-dropdown"
-                value={timeSlot}
-                onChange={(e) => setTimeSlot(e.target.value)}
-              >
-                <option value="아침">아침</option>
-                <option value="낮">낮</option>
-                <option value="저녁">저녁</option>
-              </select>
+          <div className="screen-body scroll-body">
+            <header className="brand-header">
+              <span className="header-brand-sky">옷늘날씨</span>
             </header>
 
-            <section className="weather-panel">
-              <div className="weather-top-row">
+            <section
+              className="weather-hero-card"
+              role="button"
+              tabIndex={0}
+              onClick={() => setScreen('weather-detail')}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') setScreen('weather-detail');
+              }}
+            >
+              <div className="weather-hero-top">
                 <div>
                   <button
                     type="button"
-                    className="region-chip"
-                    onClick={() => setLocationModalOpen(true)}
+                    className="loc-pill-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleOpenLocationSheet();
+                    }}
                   >
-                    ● {currentRegion.label}
+                    <span>📍</span>
+                    <span>{currentRegion.label}</span>
                   </button>
-                  <div className="temp-display">{slotWeather.temp}°C</div>
-                  <div className="weather-summary">
-                    {slotWeather.condition} · 체감 {slotWeather.feelsLike}°C
+                  <div className="hero-temp">{currentRegion.temp}°C</div>
+                  <div className="hero-sub">
+                    {currentRegion.condition} · 체감 {currentRegion.feelsLike}°C
                   </div>
                 </div>
-                <div className="sun-emblem" aria-hidden="true" />
+                <div className="yellow-sun" aria-hidden="true" />
               </div>
 
-              <div className="weather-grid">
-                <div className="metric-cell">
+              <div className="weather-four-cols">
+                <div className="w-col">
                   <strong>
-                    {slotWeather.high}° / {slotWeather.low}°
+                    {currentRegion.high}° / {currentRegion.low}°
                   </strong>
-                  <span>최고 / 최저</span>
+                  <span>최고/최저</span>
                 </div>
-                <div className="metric-cell">
-                  <strong>{slotWeather.humidity}</strong>
+                <div className="w-col">
+                  <strong>{currentRegion.humidity}</strong>
                   <span>습도</span>
                 </div>
-                <div className="metric-cell">
-                  <strong>{slotWeather.wind}</strong>
+                <div className="w-col">
+                  <strong>{currentRegion.wind}</strong>
                   <span>풍속</span>
                 </div>
-                <div className="metric-cell">
-                  <strong>{slotWeather.rainProb}</strong>
+                <div className="w-col">
+                  <strong>{currentRegion.rainProb}</strong>
                   <span>강수확률</span>
                 </div>
               </div>
             </section>
 
-            <section className="section-block">
-              <div className="section-head">
-                <h2>지금 이 거리의 스타일</h2>
-                <span className="meta-caption">갱신 · {currentRegion.updatedAt}</span>
+            <section className="home-section">
+              <div className="home-section-head">
+                <h2>지금 거리의 스타일</h2>
               </div>
-
-              <div className="street-scroll-row">
-                {streetStyleList.map((item) => (
-                  <div key={item.id} className="street-card">
-                    <div className="street-img-box">
-                      <span className="street-pct-badge">{item.pct}%</span>
-                      <img
-                        src={assetUrl(item.img)}
-                        alt={item.name}
-                        className="street-img"
-                      />
-                    </div>
-                    <div className="street-card-footer">
-                      <span className="street-name">{item.name}</span>
-                      <strong className="street-pct">{item.pct}%</strong>
-                    </div>
+              <div className="street-three-row">
+                {STREET_TRENDS.map((st) => (
+                  <div key={st.id} className="street-tile">
+                    <img
+                      src={assetUrl(st.img)}
+                      alt={st.name}
+                      className="street-tile-img"
+                    />
+                    <div className="street-tile-label">{st.name}</div>
                   </div>
                 ))}
               </div>
             </section>
 
-            <section className="section-block">
-              <div className="section-head">
+            <section className="home-section">
+              <div className="home-section-head">
                 <h2>오늘은 이렇게 입어보세요</h2>
                 <button
                   type="button"
-                  className="text-link-btn"
-                  onClick={() => setScreen('outfit')}
+                  className="detail-link-btn"
+                  onClick={() => setScreen('outfit-detail')}
                 >
                   자세히 보기
                 </button>
               </div>
 
-              <div className="feedback-bar">
-                {['더 시원하게', '딱 지금 정도로', '더 따뜻하게'].map((opt) => (
-                  <button
-                    key={opt}
-                    type="button"
-                    className={`feedback-chip ${feedback === opt ? 'active' : ''}`}
-                    onClick={() => setFeedback(opt)}
-                  >
-                    {opt}
-                  </button>
-                ))}
-              </div>
-
               <div
-                className="hero-outfit-card"
+                className="main-outfit-banner"
                 role="button"
                 tabIndex={0}
-                onClick={() => setScreen('outfit')}
+                onClick={() => setScreen('outfit-detail')}
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter') setScreen('outfit');
+                  if (e.key === 'Enter') setScreen('outfit-detail');
                 }}
               >
                 <img
-                  src={assetUrl(activeOutfit.img)}
-                  alt={activeOutfit.title}
-                  className="hero-outfit-img"
+                  src={assetUrl(OUTFIT_DETAIL.img)}
+                  alt={OUTFIT_DETAIL.title}
+                  className="main-outfit-img"
                 />
-                <div className="hero-outfit-body">
-                  <div className="hero-outfit-title">{activeOutfit.title}</div>
-                  <p className="hero-outfit-comment">{activeOutfit.comment}</p>
+                <div className="main-outfit-caption">
+                  <strong>{OUTFIT_DETAIL.title}</strong>
+                  <span>{tempPref}</span>
                 </div>
               </div>
+            </section>
+          </div>
+        )}
 
-              <div className="recommend-list">
-                {recommendedItems.map((item) => (
-                  <div key={item.id} className="recommend-card">
-                    <img
-                      src={assetUrl(item.img)}
-                      alt={item.name}
-                      className="recommend-thumb"
-                    />
-                    <div className="recommend-info">
-                      <div className="recommend-title-row">
-                        <strong>{item.name}</strong>
-                        {item.fromCloset && (
-                          <span className="closet-tag">내 옷장</span>
-                        )}
-                      </div>
-                      <p className="recommend-desc">{item.comment}</p>
-                    </div>
+        {/* 8. 날씨 상세 화면 */}
+        {screen === 'weather-detail' && (
+          <div className="screen-body scroll-body">
+            <div className="detail-top-bar">
+              <button
+                type="button"
+                className="icon-back-btn"
+                onClick={() => setScreen('home')}
+                aria-label="뒤로가기"
+              >
+                ←
+              </button>
+              <span className="center-page-title">날씨</span>
+              <span className="spacer-24" />
+            </div>
+
+            <section className="weather-hero-card compact">
+              <div className="weather-hero-top">
+                <div>
+                  <button
+                    type="button"
+                    className="loc-pill-btn"
+                    onClick={handleOpenLocationSheet}
+                  >
+                    <span>📍</span>
+                    <span>{currentRegion.label}</span>
+                  </button>
+                  <div className="hero-temp">{currentRegion.temp}°C</div>
+                  <div className="hero-sub">
+                    {currentRegion.condition} · 체감 {currentRegion.feelsLike}°C
+                  </div>
+                </div>
+                <div className="yellow-sun" aria-hidden="true" />
+              </div>
+
+              <div className="weather-four-cols">
+                <div className="w-col">
+                  <strong>
+                    {currentRegion.high}° / {currentRegion.low}°
+                  </strong>
+                  <span>최고/최저</span>
+                </div>
+                <div className="w-col">
+                  <strong>{currentRegion.humidity}</strong>
+                  <span>습도</span>
+                </div>
+                <div className="w-col">
+                  <strong>{currentRegion.wind}</strong>
+                  <span>풍속</span>
+                </div>
+                <div className="w-col">
+                  <strong>{currentRegion.rainProb}</strong>
+                  <span>강수확률</span>
+                </div>
+              </div>
+            </section>
+
+            <section className="home-section">
+              <h2 className="sub-section-title">시간대별 예보</h2>
+              <div className="hourly-strip">
+                {HOURLY_FORECAST.map((hr) => (
+                  <div key={hr.time} className="hourly-cell">
+                    <span className="hr-time">{hr.time}</span>
+                    <span className="hr-icon">{hr.icon === 'sun' ? '☀️' : '⛅'}</span>
+                    <strong className="hr-temp">{hr.temp}°</strong>
+                    <span className="hr-rain">{hr.rain}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="home-section">
+              <h2 className="sub-section-title">7일 예보</h2>
+              <div className="weekly-card-list">
+                {WEEKLY_FORECAST.map((wk) => (
+                  <div key={wk.day} className="weekly-row">
+                    <span className="wk-day">{wk.day}</span>
+                    <span className="wk-cond">{wk.cond}</span>
+                    <span className="wk-rain">{wk.rain}</span>
+                    <strong className="wk-temps">
+                      {wk.high}° / {wk.low}°
+                    </strong>
                   </div>
                 ))}
               </div>
@@ -842,216 +747,472 @@ export default function App() {
           </div>
         )}
 
-        {screen === 'outfit' && (
-          <div className="screen-scroll">
-            <header className="top-header">
-              <span className="brand-title">옷늘날씨</span>
+        {/* 9. 오늘의 추천 상세 화면 */}
+        {screen === 'outfit-detail' && (
+          <div className="screen-body scroll-body">
+            <header className="brand-header">
+              <span className="header-brand-sky">옷늘날씨</span>
             </header>
 
-            <div className="detail-photo-wrap">
+            <div className="full-width-photo-box">
               <img
-                src={assetUrl(activeOutfit.img)}
-                alt={activeOutfit.title}
-                className="detail-photo"
+                src={assetUrl(OUTFIT_DETAIL.img)}
+                alt={OUTFIT_DETAIL.title}
+                className="full-width-photo"
               />
             </div>
 
-            <section className="section-block">
-              <h2>{activeOutfit.title}</h2>
-              <p className="detail-comment">{activeOutfit.comment}</p>
+            <div className="detail-body-pad">
+              <h1 className="outfit-detail-title">{OUTFIT_DETAIL.title}</h1>
+              <p className="outfit-detail-desc">{OUTFIT_DETAIL.description}</p>
 
-              <div className="review-feed">
-                {reviews.map((rv) => (
-                  <div key={rv.id} className="review-card">
-                    <div className="review-avatar" aria-hidden="true" />
-                    <div className="review-content-col">
-                      <div className="review-header">
-                        {rv.author} · {rv.team} · {rv.tag}
-                      </div>
-                      {rv.text && <p className="review-body">{rv.text}</p>}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <form onSubmit={handleAddReview} className="review-composer">
-                <div className="tag-selector">
-                  {['추워요', '딱 좋아요', '더워요'].map((tg) => (
-                    <button
-                      key={tg}
-                      type="button"
-                      className={`tag-pill ${reviewTag === tg ? 'active' : ''}`}
-                      onClick={() => setReviewTag(tg)}
-                    >
-                      {tg}
-                    </button>
-                  ))}
+              <div className="review-section-box">
+                <div className="review-section-head">
+                  <h3>착용 리뷰 ({reviews.length})</h3>
+                  <button
+                    type="button"
+                    className="sky-small-btn"
+                    onClick={() => setScreen('review-write')}
+                  >
+                    리뷰 작성하기
+                  </button>
                 </div>
-                <input
-                  type="text"
-                  className="text-field"
-                  value={reviewInput}
-                  onChange={(e) => setReviewInput(e.target.value)}
-                  placeholder="리뷰를 입력하세요"
-                />
-                <button type="submit" className="review-submit-pill">
-                  리뷰 작성하기
-                </button>
-              </form>
-            </section>
+
+                {reviews.length === 0 ? (
+                  <div className="empty-state-box">
+                    <p>아직 작성된 후기가 없어요</p>
+                    <button
+                      type="button"
+                      className="sky-primary-btn"
+                      onClick={() => setScreen('review-write')}
+                    >
+                      리뷰 작성하기
+                    </button>
+                  </div>
+                ) : (
+                  <div className="review-items">
+                    {reviews.map((item) => (
+                      <div key={item.id} className="review-row-card">
+                        <div className="avatar-dot" aria-hidden="true" />
+                        <div className="review-row-body">
+                          <div className="review-meta">
+                            <strong>{item.author}</strong> · <span>{item.date}</span> ·{' '}
+                            <span className="fit-pill">{item.fitLabel}</span>
+                          </div>
+                          {item.text && <p className="review-comment">{item.text}</p>}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         )}
 
-        {screen === 'my' && (
-          <div className="screen-scroll">
-            <div className="my-center-head">MY</div>
-
-            <section className="my-profile-box">
-              <div className="my-avatar-circle" aria-hidden="true" />
-              <div className="my-nickname">{nickname}</div>
-              <div className="my-team-label">{team}</div>
-            </section>
-
-            <section className="my-menu-group">
+        {/* 10. 리뷰 작성 화면 */}
+        {screen === 'review-write' && (
+          <div className="screen-body step-body">
+            <div className="detail-top-bar">
               <button
                 type="button"
-                className="my-menu-item button-reset"
-                onClick={() => {
-                  setOnboardingStep(1);
-                  setScreen('onboarding');
-                }}
+                className="icon-back-btn"
+                onClick={() => setScreen('outfit-detail')}
+                aria-label="뒤로가기"
               >
-                <span>온보딩 및 위치·체질 다시 설정</span>
+                ←
+              </button>
+              <span className="center-page-title">리뷰 작성하기</span>
+              <span className="spacer-24" />
+            </div>
+
+            <form className="review-form" onSubmit={handleSubmitReview}>
+              <div className="form-group">
+                <label className="required-question">
+                  위 옷을 입었더니 어땠나요? <span className="req-star">*</span>
+                </label>
+                <div className="three-fit-row">
+                  {['추웠어요', '적당했어요', '더웠어요'].map((opt) => (
+                    <button
+                      key={opt}
+                      type="button"
+                      className={`fit-choice-btn ${fitChoice === opt ? 'selected' : ''}`}
+                      onClick={() => setFitChoice(opt)}
+                    >
+                      {opt}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label className="sub-question" htmlFor="review-textarea">
+                  착용 소감을 남겨주세요
+                </label>
+                <textarea
+                  id="review-textarea"
+                  className="review-textarea"
+                  value={reviewText}
+                  onChange={(e) => setReviewText(e.target.value)}
+                  placeholder="기온이나 바람에 따른 착용감을 자유롭게 적어주세요."
+                  maxLength={200}
+                  rows={5}
+                />
+                <div className="char-counter">{reviewText.length} / 200자</div>
+              </div>
+
+              <div className="bottom-btn-stack">
+                <button
+                  type="submit"
+                  className={`sky-primary-btn ${!isReviewSubmitEnabled ? 'disabled' : ''}`}
+                  disabled={!isReviewSubmitEnabled}
+                >
+                  등록하기
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+
+        {/* 11. 마이페이지 (MY) */}
+        {screen === 'my' && (
+          <div className="screen-body scroll-body">
+            <div className="my-top-title">MY</div>
+
+            <div className="my-profile-center">
+              <label className="profile-photo-picker" title="프로필 사진 변경">
+                {profilePhoto ? (
+                  <img src={profilePhoto} alt="프로필" className="profile-photo-img" />
+                ) : (
+                  <div className="profile-photo-placeholder" aria-hidden="true" />
+                )}
+                <span className="camera-badge" aria-hidden="true">
+                  📷
+                </span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="sr-file-input"
+                  onChange={handlePhotoChange}
+                />
+              </label>
+
+              <div className="my-name-heading">{trimmedNickname || '졸업프로젝트'}</div>
+              <div className="my-pref-sub">
+                {genderPref ? `${genderPref} 코디` : '코디 성향 미선택'} · {tempPref}
+              </div>
+            </div>
+
+            <div className="my-list-card">
+              <button
+                type="button"
+                className="my-link-row"
+                onClick={() => setScreen('my-reviews')}
+              >
+                <span>내 리뷰 {reviews.length}건 / 전체보기</span>
                 <span>&gt;</span>
               </button>
-
-              <div className="my-edit-box">
-                <label className="field-label">닉네임</label>
-                <input
-                  type="text"
-                  className="text-field"
-                  value={nickname}
-                  onChange={(e) => setNickname(e.target.value)}
-                />
-
-                <label className="field-label">체질 그룹</label>
-                <select
-                  className="text-field"
-                  value={team}
-                  onChange={(e) => setTeam(e.target.value)}
-                >
-                  <option value="팀 추워">팀 추워</option>
-                  <option value="팀 딱좋아">팀 딱좋아</option>
-                  <option value="팀 더워">팀 더워</option>
-                </select>
-
-                <label className="field-label">내 옷장</label>
-                <input
-                  type="text"
-                  className="text-field"
-                  value={closetInput}
-                  onChange={(e) => setClosetInput(e.target.value)}
-                />
-              </div>
-
-              <div className="my-menu-item">
-                <span>작성한 리뷰 {reviews.length}개</span>
-                <span>&gt;</span>
-              </div>
-            </section>
-
-            <div className="my-footer-actions">
               <button
                 type="button"
-                className="my-action-btn"
+                className="my-link-row"
+                onClick={() => setScreen('onboarding-temp')}
+              >
+                <span>체감 온도 설정 변경</span>
+                <span>&gt;</span>
+              </button>
+            </div>
+
+            <div className="my-account-actions">
+              <button
+                type="button"
+                className="logout-gray-btn"
                 onClick={() => setScreen('login')}
               >
                 로그아웃
               </button>
               <button
                 type="button"
-                className="my-action-btn danger"
+                className="withdraw-red-btn"
                 onClick={() => {
-                  setOnboardingStep(1);
-                  setScreen('splash');
+                  setGenderPref('');
+                  setScreen('login');
                 }}
               >
-                회원탈퇴
+                탈퇴
               </button>
             </div>
           </div>
         )}
 
-        {locationModalOpen && (
-          <div className="modal-backdrop" role="dialog" aria-modal="true">
-            <div className="modal-sheet">
-              <div className="modal-head">
+        {/* 12. 작성한 리뷰 목록 */}
+        {screen === 'my-reviews' && (
+          <div className="screen-body scroll-body">
+            <div className="detail-top-bar">
+              <button
+                type="button"
+                className="icon-back-btn"
+                onClick={() => setScreen('my')}
+                aria-label="뒤로가기"
+              >
+                ←
+              </button>
+              <span className="center-page-title">작성한 리뷰</span>
+              <span className="spacer-24" />
+            </div>
+
+            <div className="my-review-count-bar">작성한 리뷰 {reviews.length}건</div>
+
+            {reviews.length === 0 ? (
+              <div className="empty-state-box tall">
+                <p>작성한 리뷰가 없어요</p>
+              </div>
+            ) : (
+              <div className="gray-review-stack">
+                {reviews.map((rv) => (
+                  <div key={rv.id} className="gray-review-card">
+                    <div className="gray-card-top">
+                      <strong>{rv.outfitTitle}</strong>
+                      <span>{rv.date}</span>
+                    </div>
+                    <div className="gray-card-fit">{rv.fitLabel}</div>
+                    {rv.text && <p className="gray-card-text">{rv.text}</p>}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* iOS 구글 로그인 시트 */}
+        {googleSheetOpen && (
+          <div className="overlay-backdrop" role="dialog" aria-modal="true">
+            <div className="ios-alert-card">
+              {googleStep === 'prompt' && (
+                <>
+                  <h3 className="ios-alert-title">
+                    &apos;wearther&apos;이(가) &apos;account.google.com&apos;을(를) 사용하여
+                    로그인하려고 합니다
+                  </h3>
+                  <p className="ios-alert-msg">
+                    이렇게 하면 앱과 웹사이트가 사용자에 대한 정보를 공유할 수 있습니다.
+                  </p>
+                  <div className="ios-alert-btn-row">
+                    <button
+                      type="button"
+                      className="ios-cancel-btn"
+                      onClick={() => setGoogleSheetOpen(false)}
+                    >
+                      취소
+                    </button>
+                    <button
+                      type="button"
+                      className="ios-continue-btn"
+                      onClick={() => setGoogleStep('account')}
+                    >
+                      계속
+                    </button>
+                  </div>
+                </>
+              )}
+
+              {googleStep === 'account' && (
+                <>
+                  <h3 className="ios-alert-title">Google 계정 선택</h3>
+                  <p className="ios-alert-msg">옷늘날씨(Today&apos;s WEARther)로 이동</p>
+                  <button
+                    type="button"
+                    className="google-acct-choice"
+                    onClick={() => setGoogleStep('consent')}
+                  >
+                    <strong>wearther.user@gmail.com</strong>
+                    <span>계정 선택</span>
+                  </button>
+                  <button
+                    type="button"
+                    className="ios-cancel-btn full-w"
+                    onClick={() => setGoogleSheetOpen(false)}
+                  >
+                    취소
+                  </button>
+                </>
+              )}
+
+              {googleStep === 'consent' && (
+                <>
+                  <h3 className="ios-alert-title">계정 정보 제공 동의</h3>
+                  <p className="ios-alert-msg">
+                    기본 프로필 정보로 옷늘날씨 온보딩을 시작합니다.
+                  </p>
+                  <div className="ios-alert-btn-row">
+                    <button
+                      type="button"
+                      className="ios-cancel-btn"
+                      onClick={() => setGoogleSheetOpen(false)}
+                    >
+                      취소
+                    </button>
+                    <button
+                      type="button"
+                      className="ios-continue-btn"
+                      onClick={() => {
+                        setGoogleSheetOpen(false);
+                        setScreen('location-perm');
+                      }}
+                    >
+                      동의하고 계속
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* 웰컴 바텀시트 */}
+        {welcomeSheetOpen && screen === 'home' && (
+          <div className="overlay-backdrop bottom-align" role="dialog" aria-modal="true">
+            <div className="bottom-sheet-card">
+              <span className="eyebrow-sky">WELCOME</span>
+              <h3 className="sheet-heading">
+                {trimmedNickname || '졸업프로젝트'}님! 옷늘날씨에 오신걸 환영해요
+              </h3>
+              <p className="sheet-subcopy">날씨에 어울리는 코디를 추천해 드릴게요</p>
+              <button
+                type="button"
+                className="sky-primary-btn"
+                onClick={() => setWelcomeSheetOpen(false)}
+              >
+                시작하기
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* 내 위치 선택 바텀시트 */}
+        {locationSheetOpen && (
+          <div className="overlay-backdrop bottom-align" role="dialog" aria-modal="true">
+            <div className="bottom-sheet-card">
+              <div className="sheet-top-bar">
                 <strong>내 위치 선택</strong>
                 <button
                   type="button"
-                  className="close-btn"
-                  onClick={() => setLocationModalOpen(false)}
+                  className="close-x-btn"
+                  onClick={() => setLocationSheetOpen(false)}
+                  aria-label="닫기"
                 >
                   ×
                 </button>
               </div>
+
               <input
                 type="text"
-                className="text-field"
+                className="addr-search-input"
                 value={locationQuery}
-                onChange={(e) => setLocationQuery(e.target.value)}
-                placeholder="읍, 면, 동으로 검색"
+                onChange={(e) => {
+                  setLocationQuery(e.target.value);
+                  setCandidateRegionId('');
+                }}
+                placeholder="동, 읍, 면으로 검색해주세요"
               />
+
               <button
                 type="button"
-                className="current-loc-btn"
-                onClick={handleSetCurrentLocation}
+                className="current-gps-btn"
+                onClick={handleUseCurrentLocation}
               >
-                현재 위치로 설정
+                현재 위치로 설정하기
               </button>
-              <div className="location-list">
-                {filteredRegions.map((r) => (
-                  <button
-                    key={r.id}
-                    type="button"
-                    className={`location-row ${regionId === r.id ? 'active' : ''}`}
-                    onClick={() => {
-                      setRegionId(r.id);
-                      setLocationModalOpen(false);
-                      setLocationQuery('');
-                    }}
-                  >
-                    <strong>{r.label}</strong>
-                    <span>{r.fullRegion}</span>
-                  </button>
-                ))}
+
+              <div className="addr-result-area">
+                {!locationQuery.trim() ? (
+                  <div className="addr-empty-center">주소를 검색해주세요</div>
+                ) : searchResults.length === 0 ? (
+                  <div className="addr-empty-center">일치하는 주소가 없어요</div>
+                ) : (
+                  searchResults.map((item) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      className={`addr-item-btn ${
+                        candidateRegionId === item.id ? 'selected' : ''
+                      }`}
+                      onClick={() => setCandidateRegionId(item.id)}
+                    >
+                      <strong>{item.dong}</strong>
+                      <span>{item.fullAddress}</span>
+                    </button>
+                  ))
+                )}
+              </div>
+
+              <button
+                type="button"
+                className={`sky-primary-btn ${!candidateRegionId ? 'disabled' : ''}`}
+                disabled={!candidateRegionId}
+                onClick={handleConfirmLocationChange}
+              >
+                변경
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* 리뷰 등록 완료 다이얼로그 */}
+        {reviewDoneModalOpen && (
+          <div className="overlay-backdrop" role="dialog" aria-modal="true">
+            <div className="ios-alert-card">
+              <h3 className="ios-alert-title">
+                등록이 완료되었습니다! 작성한 리뷰 확인하시겠어요?
+              </h3>
+              <div className="ios-alert-btn-row">
+                <button
+                  type="button"
+                  className="ios-cancel-btn"
+                  onClick={() => {
+                    setReviewDoneModalOpen(false);
+                    setScreen('outfit-detail');
+                  }}
+                >
+                  아니오
+                </button>
+                <button
+                  type="button"
+                  className="ios-continue-btn"
+                  onClick={() => {
+                    setReviewDoneModalOpen(false);
+                    setScreen('my-reviews');
+                  }}
+                >
+                  마이페이지로
+                </button>
               </div>
             </div>
           </div>
         )}
 
-        {showBottomTab && (
-          <nav className="bottom-tabbar" aria-label="하단 탭">
+        {/* 하단 탭바 */}
+        {showBottomBar && (
+          <nav className="bottom-nav" aria-label="하단 메뉴">
             <button
               type="button"
-              className={`tab-btn ${screen === 'home' ? 'active' : ''}`}
+              className={`nav-item ${activeTab === 'home' ? 'active' : ''}`}
               onClick={() => setScreen('home')}
             >
               홈
             </button>
             <button
               type="button"
-              className={`tab-btn ${screen === 'outfit' ? 'active' : ''}`}
-              onClick={() => setScreen('outfit')}
+              className={`nav-item ${activeTab === 'outfit' ? 'active' : ''}`}
+              onClick={() => setScreen('outfit-detail')}
             >
-              오늘의 코디
+              오늘의 추천
             </button>
             <button
               type="button"
-              className={`tab-btn ${screen === 'my' ? 'active' : ''}`}
+              className={`nav-item ${activeTab === 'my' ? 'active' : ''}`}
               onClick={() => setScreen('my')}
             >
-              마이
+              마이페이지
             </button>
           </nav>
         )}
